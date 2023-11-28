@@ -1,0 +1,36 @@
+{
+  "name": "@bablr/language-json",
+  "version": "0.0.0",
+  "description": "A BABLR language for JSON",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/grammar.js"
+  },
+  "files": [
+    "lib/**/*.js"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@bablr/boot": "0.1.8",
+    "@bablr/grammar": "github:bablr-lang/grammar#a280340581846073caf47fd531e7f365f4aef5f2",
+    "@bablr/helpers": "0.1.4"
+  },
+  "devDependencies": {
+    "@bablr/eslint-config-base": "github:bablr-lang/eslint-config-base#c040bc95f2dddac160628e4757a412016044b3ef",
+    "@bablr/hol-debug-log": "0.1.2",
+    "@bablr/vm": "0.1.11",
+    "enhanced-resolve": "^5.12.0",
+    "eslint": "^7.32.0",
+    "eslint-import-resolver-enhanced-resolve": "^1.0.5",
+    "eslint-plugin-import": "^2.27.5",
+    "iter-tools-es": "^7.5.3",
+    "prettier": "^2.0.5"
+  },
+  "repository": "git@github.com:bablr-lang/language-json.git",
+  "homepage": "https://github.com/bablr-lang/language-json",
+  "author": "Conrad Buck <conartist6@gmail.com>",
+  "license": "MIT"
+}
