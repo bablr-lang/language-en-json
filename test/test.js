@@ -9,7 +9,7 @@ export const testCases = [
     sourceText: '"hello"',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <String>
           open:
           <Punctuator balanced='"' lexicalSpan='String'>
@@ -31,7 +31,7 @@ export const testCases = [
     sourceText: '""',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <String>
           open:
           <Punctuator balanced='"' lexicalSpan='String'>
@@ -51,7 +51,7 @@ export const testCases = [
     sourceText: '" "',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <String>
           open:
           <Punctuator balanced='"' lexicalSpan='String'>
@@ -69,13 +69,12 @@ export const testCases = [
       </>`,
   },
   {
-    skip: true,
     matcher: spam`<Expression>`,
     sourceText: ' " " ',
     parsed: dedent`\
       <>
         #' '
-        children[]:
+        root:
         <String>
           open:
           <Punctuator balanced='"' lexicalSpan='String'>
@@ -89,8 +88,8 @@ export const testCases = [
           <Punctuator balancer>
             '"'
           </>
+          #' '
         </>
-        #' '
       </>`,
   },
   {
@@ -98,7 +97,7 @@ export const testCases = [
     sourceText: '"\\n"',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <String>
           open:
           <Punctuator balanced='"' lexicalSpan='String'>
@@ -120,7 +119,7 @@ export const testCases = [
     sourceText: 'true',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <Boolean>
           value:
           <Keyword>
@@ -134,7 +133,7 @@ export const testCases = [
     sourceText: '1',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <Number span='Number'>
           wholePart:
           <Integer>
@@ -161,7 +160,7 @@ export const testCases = [
     sourceText: 'null',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <Null>
           value:
           <Keyword>
@@ -175,7 +174,7 @@ export const testCases = [
     sourceText: '[]',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <Array>
           open:
           <Punctuator balanced=']'>
@@ -197,7 +196,7 @@ export const testCases = [
     sourceText: '[null]',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <Array>
           open:
           <Punctuator balanced=']'>
@@ -222,7 +221,7 @@ export const testCases = [
     sourceText: '21',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <Number span='Number'>
           wholePart:
           <Integer>
@@ -253,7 +252,7 @@ export const testCases = [
     sourceText: '[true, false]',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <Array>
           open:
           <Punctuator balanced=']'>
@@ -290,7 +289,7 @@ export const testCases = [
     sourceText: '{"foo":null}',
     parsed: dedent`\
       <>
-        children[]:
+        root:
         <Object>
           open:
           <Punctuator balanced='}'>

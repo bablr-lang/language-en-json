@@ -12,8 +12,8 @@ dependencies:
     specifier: github:bablr-lang/grammar#a280340581846073caf47fd531e7f365f4aef5f2
     version: github.com/bablr-lang/grammar/a280340581846073caf47fd531e7f365f4aef5f2
   '@bablr/helpers':
-    specifier: 0.1.4
-    version: 0.1.4
+    specifier: 0.1.8
+    version: 0.1.8
 
 devDependencies:
   '@bablr/eslint-config-base':
@@ -23,11 +23,11 @@ devDependencies:
     specifier: 0.1.2
     version: 0.1.2
   '@bablr/test-runner':
-    specifier: github:bablr-lang/test-runner#2bc080297a899b18a5b329fd995cd4ffbee11ebc
-    version: github.com/bablr-lang/test-runner/2bc080297a899b18a5b329fd995cd4ffbee11ebc(@bablr/vm@0.1.11)
+    specifier: github:bablr-lang/test-runner#ba97b934592b02163cdc911159fd53581206118f
+    version: github.com/bablr-lang/test-runner/ba97b934592b02163cdc911159fd53581206118f(@bablr/vm@0.1.16)
   '@bablr/vm':
-    specifier: 0.1.11
-    version: 0.1.11
+    specifier: 0.1.16
+    version: 0.1.16
   '@qnighy/dedent':
     specifier: 0.1.1
     version: 0.1.1
@@ -323,6 +323,18 @@ packages:
       iter-tools-es: 7.5.3
     dev: false
 
+  /@bablr/boot@0.1.9:
+    resolution: {integrity: sha512-+ViZc0SKnFKq5eShSmk37L3GlWzIPlxj9HcSqPRobGc4tXbEQ4Y78mSohHxzPF3WmqJdYpqW2Oc5/zGoSroaKA==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@babel/helper-module-imports': 7.22.15
+      '@babel/template': 7.22.15
+      '@babel/types': 7.23.0
+      '@bablr/boot-helpers': 0.1.2
+      escape-string-regexp: 4.0.0
+      iter-tools-es: 7.5.3
+    dev: false
+
   /@bablr/helpers@0.1.2:
     resolution: {integrity: sha512-uI/63bhELO+wJFc97gu9davCpLJsEZHdkc/KaotLdnDxqGblkp5RcUbVrKQKoXmZsjOYUPY8rue2uEOx/oyPAQ==}
     dependencies:
@@ -331,10 +343,10 @@ packages:
       iter-tools-es: 7.5.3
     dev: true
 
-  /@bablr/helpers@0.1.4:
-    resolution: {integrity: sha512-S7SpGdJJiueB5dQ5kRdbZcg7GOF4+73vRseOktEL4k90urvBh9dxLOWz3mJbPN4M1h5q8bSqTV/GhZLxxPBEUA==}
+  /@bablr/helpers@0.1.8:
+    resolution: {integrity: sha512-5Q55WlXdvvRUD4ZNYKZr5IR+kFX4iV4dOzFw49YvSZru5CHPUX7SjqjH+fKf6bwe3JsyPVdmSc5AWwrjH7dNIQ==}
     dependencies:
-      '@bablr/boot': 0.1.8
+      '@bablr/boot': 0.1.9
       '@bablr/boot-helpers': 0.1.3
       iter-tools-es: 7.5.3
     dev: false
@@ -360,8 +372,8 @@ packages:
       iter-tools-es: 7.5.3
     dev: true
 
-  /@bablr/vm@0.1.11:
-    resolution: {integrity: sha512-h05cQ5CvpfnTh1BJKNoCYR8qxf8vLErJNMAP+W3vY8BV9XaMmy1LzSxagiPhI0XVbWrf2/Gn+2GeJoM0VWcgYA==}
+  /@bablr/vm@0.1.16:
+    resolution: {integrity: sha512-EqXnwAB+mRU54atccAFwm9vIa1BOAO/A/ursKvY3ilFzZsg2Nmx1F4POSbR7nOlHIBUXHnIMlIZosXLezSpuEw==}
     dependencies:
       '@bablr/boot-helpers': 0.1.3
       '@bablr/regex-vm': 0.4.0
@@ -1966,16 +1978,16 @@ packages:
       iter-tools-es: 7.5.3
     dev: false
 
-  github.com/bablr-lang/test-runner/2bc080297a899b18a5b329fd995cd4ffbee11ebc(@bablr/vm@0.1.11):
-    resolution: {tarball: https://codeload.github.com/bablr-lang/test-runner/tar.gz/2bc080297a899b18a5b329fd995cd4ffbee11ebc}
-    id: github.com/bablr-lang/test-runner/2bc080297a899b18a5b329fd995cd4ffbee11ebc
+  github.com/bablr-lang/test-runner/ba97b934592b02163cdc911159fd53581206118f(@bablr/vm@0.1.16):
+    resolution: {tarball: https://codeload.github.com/bablr-lang/test-runner/tar.gz/ba97b934592b02163cdc911159fd53581206118f}
+    id: github.com/bablr-lang/test-runner/ba97b934592b02163cdc911159fd53581206118f
     name: '@bablr/test-runner'
     version: 0.0.0
     engines: {node: '>=12.0.0'}
     peerDependencies:
-      '@bablr/vm': 0.1.11
+      '@bablr/vm': '*'
     dependencies:
       '@bablr/hol-debug-log': 0.1.3
-      '@bablr/vm': 0.1.11
+      '@bablr/vm': 0.1.16
       indent-string: 5.0.0
     dev: true
