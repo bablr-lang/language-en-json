@@ -17,16 +17,16 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@bablr/boot": "0.1.8",
+    "@bablr/boot": "github:bablr-lang/boot#461dbb0adcc207acf74ff5862787c261e517b55f",
     "@bablr/grammar": "github:bablr-lang/grammar#a280340581846073caf47fd531e7f365f4aef5f2",
-    "@bablr/helpers": "0.1.8"
+    "@bablr/helpers": "github:bablr-lang/bablr-helpers#cc1d37fa91f470dcf3bf1b4f6b05a8350dc52155"
   },
   "devDependencies": {
     "@bablr/eslint-config-base": "github:bablr-lang/eslint-config-base#c040bc95f2dddac160628e4757a412016044b3ef",
     "@bablr/hol-debug-log": "0.1.2",
-    "@bablr/test-runner": "github:bablr-lang/test-runner#ba97b934592b02163cdc911159fd53581206118f",
-    "@bablr/vm": "0.1.16",
+    "@bablr/test-runner": "github:bablr-lang/test-runner#4f1d33b990a66659830160596e7a8c23a2556520",
     "@qnighy/dedent": "0.1.1",
+    "bablr": "github:bablr-lang/bablr#8f0a68f8d78f4aed3f42746b4170449d6fbb2f35",
     "enhanced-resolve": "^5.12.0",
     "eslint": "^7.32.0",
     "eslint-import-resolver-enhanced-resolve": "^1.0.5",

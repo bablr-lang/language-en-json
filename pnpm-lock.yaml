@@ -6,14 +6,14 @@ settings:
 
 dependencies:
   '@bablr/boot':
-    specifier: 0.1.8
-    version: 0.1.8
+    specifier: github:bablr-lang/boot#461dbb0adcc207acf74ff5862787c261e517b55f
+    version: github.com/bablr-lang/boot/461dbb0adcc207acf74ff5862787c261e517b55f
   '@bablr/grammar':
     specifier: github:bablr-lang/grammar#a280340581846073caf47fd531e7f365f4aef5f2
     version: github.com/bablr-lang/grammar/a280340581846073caf47fd531e7f365f4aef5f2
   '@bablr/helpers':
-    specifier: 0.1.8
-    version: 0.1.8
+    specifier: github:bablr-lang/bablr-helpers#cc1d37fa91f470dcf3bf1b4f6b05a8350dc52155
+    version: github.com/bablr-lang/bablr-helpers/cc1d37fa91f470dcf3bf1b4f6b05a8350dc52155
 
 devDependencies:
   '@bablr/eslint-config-base':
@@ -23,14 +23,14 @@ devDependencies:
     specifier: 0.1.2
     version: 0.1.2
   '@bablr/test-runner':
-    specifier: github:bablr-lang/test-runner#ba97b934592b02163cdc911159fd53581206118f
-    version: github.com/bablr-lang/test-runner/ba97b934592b02163cdc911159fd53581206118f(@bablr/vm@0.1.16)
-  '@bablr/vm':
-    specifier: 0.1.16
-    version: 0.1.16
+    specifier: github:bablr-lang/test-runner#4f1d33b990a66659830160596e7a8c23a2556520
+    version: github.com/bablr-lang/test-runner/4f1d33b990a66659830160596e7a8c23a2556520(bablr@0.0.0)
   '@qnighy/dedent':
     specifier: 0.1.1
     version: 0.1.1
+  bablr:
+    specifier: github:bablr-lang/bablr#8f0a68f8d78f4aed3f42746b4170449d6fbb2f35
+    version: github.com/bablr-lang/bablr/8f0a68f8d78f4aed3f42746b4170449d6fbb2f35
   enhanced-resolve:
     specifier: ^5.12.0
     version: 5.15.0
@@ -295,10 +295,6 @@ packages:
     resolution: {integrity: sha512-v0QAMuaQJgYsclldRG9hsJFHPw7YJb0JVP2g4cL30N0T/AmNrUfqj/jwf+kMUl6lVSHIZNPc8pwMAVXPC2niFg==}
     engines: {node: '>=12.0.0'}
 
-  /@bablr/boot-helpers@0.1.3:
-    resolution: {integrity: sha512-RrIVJqmQHH0ka0ZzdFG84bXskJVRZ3DBM82l5mN3orhbkbEuGUKVWJ+vKtIKOskrRcqhWCtd588BbZdZQG9/TQ==}
-    engines: {node: '>=12.0.0'}
-
   /@bablr/boot@0.1.6:
     resolution: {integrity: sha512-CX1SYzPJtuNY164dXPQPP+ZzR7f86+tFmJoMGPbfEXQ6++6NX5FHUVA7IUINmfbGYsCgz1nmuhEvzoZ2xcL7PA==}
     engines: {node: '>=12.0.0'}
@@ -311,30 +307,6 @@ packages:
       iter-tools-es: 7.5.3
     dev: true
 
-  /@bablr/boot@0.1.8:
-    resolution: {integrity: sha512-dWOOtXJTki/L9AtIFfJgI08Ry6NGXqqbbSr3ON70r0289BvvJmu/Un/903fyS2k636IKSBrmoXgESVJSFD5q2w==}
-    engines: {node: '>=12.0.0'}
-    dependencies:
-      '@babel/helper-module-imports': 7.22.15
-      '@babel/template': 7.22.15
-      '@babel/types': 7.23.0
-      '@bablr/boot-helpers': 0.1.2
-      escape-string-regexp: 4.0.0
-      iter-tools-es: 7.5.3
-    dev: false
-
-  /@bablr/boot@0.1.9:
-    resolution: {integrity: sha512-+ViZc0SKnFKq5eShSmk37L3GlWzIPlxj9HcSqPRobGc4tXbEQ4Y78mSohHxzPF3WmqJdYpqW2Oc5/zGoSroaKA==}
-    engines: {node: '>=12.0.0'}
-    dependencies:
-      '@babel/helper-module-imports': 7.22.15
-      '@babel/template': 7.22.15
-      '@babel/types': 7.23.0
-      '@bablr/boot-helpers': 0.1.2
-      escape-string-regexp: 4.0.0
-      iter-tools-es: 7.5.3
-    dev: false
-
   /@bablr/helpers@0.1.2:
     resolution: {integrity: sha512-uI/63bhELO+wJFc97gu9davCpLJsEZHdkc/KaotLdnDxqGblkp5RcUbVrKQKoXmZsjOYUPY8rue2uEOx/oyPAQ==}
     dependencies:
@@ -343,42 +315,10 @@ packages:
       iter-tools-es: 7.5.3
     dev: true
 
-  /@bablr/helpers@0.1.8:
-    resolution: {integrity: sha512-5Q55WlXdvvRUD4ZNYKZr5IR+kFX4iV4dOzFw49YvSZru5CHPUX7SjqjH+fKf6bwe3JsyPVdmSc5AWwrjH7dNIQ==}
-    dependencies:
-      '@bablr/boot': 0.1.9
-      '@bablr/boot-helpers': 0.1.3
-      iter-tools-es: 7.5.3
-    dev: false
-
   /@bablr/hol-debug-log@0.1.2:
     resolution: {integrity: sha512-/8KVt6Icp/TrOmekma2jP0BbA4PRaUMFIgcS1ubJ6jlGHKPsM9lIPG2QnGFWUQIMmvoS9pDewTfS0+xzr729gQ==}
     dependencies:
       '@bablr/helpers': 0.1.2
-    dev: true
-
-  /@bablr/hol-debug-log@0.1.3:
-    resolution: {integrity: sha512-pRG/uo3YvSUnXZE/DR6WEpgQRdvTWKggRI2jh0A1PQKD5rkcx3kMriUEfi2nJgzVyZn0vI/j6dYagyF7HjOmDg==}
-    dependencies:
-      '@bablr/helpers': 0.1.2
-    dev: true
-
-  /@bablr/regex-vm@0.4.0:
-    resolution: {integrity: sha512-1uuExIXXHahGiMK5qG7OXjZpw2pXDmHTy8v6t6hl4V5zSGvuexGhjnlEBWQnQ/8O/E8QsmeNTeZ1wp+/CEfCAg==}
-    engines: {node: '>=12.0.0'}
-    dependencies:
-      '@iter-tools/imm-stack': 1.1.0
-      functional-red-black-tree: 1.0.1
-      iter-tools-es: 7.5.3
-    dev: true
-
-  /@bablr/vm@0.1.16:
-    resolution: {integrity: sha512-EqXnwAB+mRU54atccAFwm9vIa1BOAO/A/ursKvY3ilFzZsg2Nmx1F4POSbR7nOlHIBUXHnIMlIZosXLezSpuEw==}
-    dependencies:
-      '@bablr/boot-helpers': 0.1.3
-      '@bablr/regex-vm': 0.4.0
-      '@iter-tools/imm-stack': 1.1.0
-      iter-tools-es: 7.5.3
     dev: true
 
   /@eslint/eslintrc@0.4.3:
@@ -415,7 +355,6 @@ packages:
 
   /@iter-tools/imm-stack@1.1.0:
     resolution: {integrity: sha512-5wCL8xt4sZ3v0buB3HrzqL2FTkaYB+ZVwkACo1G80zXWWG/8tSGgRiz7EQSkgDRrPQtpoGXRdOKW+GAVmG/Uyg==}
-    dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
@@ -1950,6 +1889,122 @@ packages:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: true
 
+  git@github.com+bablr-lang/helpers/1a32199aac2f146a818b97ec228544aa14ef73a5:
+    resolution: {commit: 1a32199aac2f146a818b97ec228544aa14ef73a5, repo: git@github.com:bablr-lang/helpers.git, type: git}
+    name: '@bablr/helpers'
+    version: 0.0.0
+    dependencies:
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/8b57f2971fc91f6dd4e23ec626a77c931c877786
+      iter-tools-es: 7.5.3
+    dev: true
+
+  git@github.com+bablr-lang/hol-debug-log/2c5e7f2f7faf7c0f7e93e1468ecb7e8450859640:
+    resolution: {commit: 2c5e7f2f7faf7c0f7e93e1468ecb7e8450859640, repo: git@github.com:bablr-lang/hol-debug-log.git, type: git}
+    name: '@bablr/hol-debug-log'
+    version: 0.0.0
+    dependencies:
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/8b57f2971fc91f6dd4e23ec626a77c931c877786
+      '@bablr/helpers': git@github.com+bablr-lang/helpers/1a32199aac2f146a818b97ec228544aa14ef73a5
+    dev: true
+
+  github.com/bablr-lang/agast-helpers/06894387f6d302a35d61a016cc5054fa5a69d768:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/agast-helpers/tar.gz/06894387f6d302a35d61a016cc5054fa5a69d768}
+    name: '@bablr/agast-helpers'
+    version: 0.0.0
+    dependencies:
+      '@iter-tools/imm-stack': 1.1.0
+    dev: true
+
+  github.com/bablr-lang/agast-helpers/8b57f2971fc91f6dd4e23ec626a77c931c877786:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/agast-helpers/tar.gz/8b57f2971fc91f6dd4e23ec626a77c931c877786}
+    name: '@bablr/agast-helpers'
+    version: 0.0.0
+    dependencies:
+      '@iter-tools/imm-stack': 1.1.0
+
+  github.com/bablr-lang/agast-helpers/f59c044508ac43226f071345f8e0231fa3fc7fa4:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/agast-helpers/tar.gz/f59c044508ac43226f071345f8e0231fa3fc7fa4}
+    name: '@bablr/agast-helpers'
+    version: 0.0.0
+    dependencies:
+      '@iter-tools/imm-stack': 1.1.0
+    dev: true
+
+  github.com/bablr-lang/agast-vm-helpers/5f778842db996fc6e610984dda70ec6a72899e4f:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/agast-vm-helpers/tar.gz/5f778842db996fc6e610984dda70ec6a72899e4f}
+    name: '@bablr/agast-vm-helpers'
+    version: 0.0.0
+    dependencies:
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/06894387f6d302a35d61a016cc5054fa5a69d768
+    dev: true
+
+  github.com/bablr-lang/agast-vm-helpers/62420e6dcf3cd4c9cb9301ba13a3854f4e1af8d4:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/agast-vm-helpers/tar.gz/62420e6dcf3cd4c9cb9301ba13a3854f4e1af8d4}
+    name: '@bablr/agast-vm-helpers'
+    version: 0.0.0
+    dependencies:
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/f59c044508ac43226f071345f8e0231fa3fc7fa4
+    dev: true
+
+  github.com/bablr-lang/agast-vm/1f7ba210f281bacec98f3e4d1ad25b8a8583c986:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/agast-vm/tar.gz/1f7ba210f281bacec98f3e4d1ad25b8a8583c986}
+    name: '@bablr/agast-vm'
+    version: 0.0.0
+    dependencies:
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/06894387f6d302a35d61a016cc5054fa5a69d768
+      '@bablr/agast-vm-helpers': github.com/bablr-lang/agast-vm-helpers/5f778842db996fc6e610984dda70ec6a72899e4f
+      '@bablr/coroutine': github.com/bablr-lang/coroutine/2342d82713731288034df588f11f540d1b76603d
+      '@bablr/regex-vm': github.com/bablr-lang/regex-vm/eca0b3ebdcee67f68f7f6b9addc147cf97a63902
+      '@bablr/weak-stack': github.com/bablr-lang/weak-stack/9448f4a9a550900698c072fb39d77307763b5cd8
+      '@iter-tools/imm-stack': 1.1.0
+      iter-tools-es: 7.5.3
+    dev: true
+
+  github.com/bablr-lang/bablr-helpers/cc1d37fa91f470dcf3bf1b4f6b05a8350dc52155:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/bablr-helpers/tar.gz/cc1d37fa91f470dcf3bf1b4f6b05a8350dc52155}
+    name: '@bablr/helpers'
+    version: 0.0.0
+    dependencies:
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/8b57f2971fc91f6dd4e23ec626a77c931c877786
+      iter-tools-es: 7.5.3
+    dev: false
+
+  github.com/bablr-lang/bablr/8f0a68f8d78f4aed3f42746b4170449d6fbb2f35:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/bablr/tar.gz/8f0a68f8d78f4aed3f42746b4170449d6fbb2f35}
+    name: bablr
+    version: 0.0.0
+    dependencies:
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/06894387f6d302a35d61a016cc5054fa5a69d768
+      '@bablr/agast-vm': github.com/bablr-lang/agast-vm/1f7ba210f281bacec98f3e4d1ad25b8a8583c986
+      '@bablr/generator-class-trampoline': github.com/bablr-lang/generator-class-trampoline/16d03dce8fc9ac3183ec2b3304822c3d8648b699
+    dev: true
+
+  github.com/bablr-lang/boot/461dbb0adcc207acf74ff5862787c261e517b55f:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/boot/tar.gz/461dbb0adcc207acf74ff5862787c261e517b55f}
+    name: '@bablr/boot'
+    version: 0.0.0
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@babel/helper-module-imports': 7.22.15
+      '@babel/template': 7.22.15
+      '@babel/types': 7.23.0
+      '@bablr/boot-helpers': 0.1.2
+      escape-string-regexp: 4.0.0
+      iter-tools-es: 7.5.3
+    dev: false
+
+  github.com/bablr-lang/class-grammar-helpers/3bd5c83a2697e3a1b9e421f868a430d3ea1c9be0:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/class-grammar-helpers/tar.gz/3bd5c83a2697e3a1b9e421f868a430d3ea1c9be0}
+    name: '@bablr/class-grammar-helpers'
+    version: 0.0.0
+    dev: true
+
+  github.com/bablr-lang/coroutine/2342d82713731288034df588f11f540d1b76603d:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/coroutine/tar.gz/2342d82713731288034df588f11f540d1b76603d}
+    name: '@bablr/coroutine'
+    version: 0.0.0
+    dev: true
+
   github.com/bablr-lang/eslint-config-base/c040bc95f2dddac160628e4757a412016044b3ef(eslint@7.32.0):
     resolution: {tarball: https://codeload.github.com/bablr-lang/eslint-config-base/tar.gz/c040bc95f2dddac160628e4757a412016044b3ef}
     id: github.com/bablr-lang/eslint-config-base/c040bc95f2dddac160628e4757a412016044b3ef
@@ -1970,6 +2025,18 @@ packages:
       - supports-color
     dev: true
 
+  github.com/bablr-lang/generator-class-trampoline/16d03dce8fc9ac3183ec2b3304822c3d8648b699:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/generator-class-trampoline/tar.gz/16d03dce8fc9ac3183ec2b3304822c3d8648b699}
+    name: '@bablr/generator-class-trampoline'
+    version: 0.0.0
+    dependencies:
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/8b57f2971fc91f6dd4e23ec626a77c931c877786
+      '@bablr/agast-vm-helpers': github.com/bablr-lang/agast-vm-helpers/62420e6dcf3cd4c9cb9301ba13a3854f4e1af8d4
+      '@bablr/class-grammar-helpers': github.com/bablr-lang/class-grammar-helpers/3bd5c83a2697e3a1b9e421f868a430d3ea1c9be0
+      '@bablr/coroutine': github.com/bablr-lang/coroutine/2342d82713731288034df588f11f540d1b76603d
+      '@bablr/weak-stack': github.com/bablr-lang/weak-stack/9448f4a9a550900698c072fb39d77307763b5cd8
+    dev: true
+
   github.com/bablr-lang/grammar/a280340581846073caf47fd531e7f365f4aef5f2:
     resolution: {tarball: https://codeload.github.com/bablr-lang/grammar/tar.gz/a280340581846073caf47fd531e7f365f4aef5f2}
     name: '@bablr/grammar'
@@ -1978,16 +2045,35 @@ packages:
       iter-tools-es: 7.5.3
     dev: false
 
-  github.com/bablr-lang/test-runner/ba97b934592b02163cdc911159fd53581206118f(@bablr/vm@0.1.16):
-    resolution: {tarball: https://codeload.github.com/bablr-lang/test-runner/tar.gz/ba97b934592b02163cdc911159fd53581206118f}
-    id: github.com/bablr-lang/test-runner/ba97b934592b02163cdc911159fd53581206118f
+  github.com/bablr-lang/regex-vm/eca0b3ebdcee67f68f7f6b9addc147cf97a63902:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/regex-vm/tar.gz/eca0b3ebdcee67f68f7f6b9addc147cf97a63902}
+    name: '@bablr/regex-vm'
+    version: 0.0.0
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/8b57f2971fc91f6dd4e23ec626a77c931c877786
+      '@iter-tools/imm-stack': 1.1.0
+      functional-red-black-tree: 1.0.1
+      iter-tools-es: 7.5.3
+    dev: true
+
+  github.com/bablr-lang/test-runner/4f1d33b990a66659830160596e7a8c23a2556520(bablr@0.0.0):
+    resolution: {tarball: https://codeload.github.com/bablr-lang/test-runner/tar.gz/4f1d33b990a66659830160596e7a8c23a2556520}
+    id: github.com/bablr-lang/test-runner/4f1d33b990a66659830160596e7a8c23a2556520
     name: '@bablr/test-runner'
     version: 0.0.0
     engines: {node: '>=12.0.0'}
     peerDependencies:
-      '@bablr/vm': '*'
+      bablr: '*'
     dependencies:
-      '@bablr/hol-debug-log': 0.1.3
-      '@bablr/vm': 0.1.16
+      '@bablr/agast-helpers': github.com/bablr-lang/agast-helpers/8b57f2971fc91f6dd4e23ec626a77c931c877786
+      '@bablr/hol-debug-log': git@github.com+bablr-lang/hol-debug-log/2c5e7f2f7faf7c0f7e93e1468ecb7e8450859640
+      bablr: github.com/bablr-lang/bablr/8f0a68f8d78f4aed3f42746b4170449d6fbb2f35
       indent-string: 5.0.0
+    dev: true
+
+  github.com/bablr-lang/weak-stack/9448f4a9a550900698c072fb39d77307763b5cd8:
+    resolution: {tarball: https://codeload.github.com/bablr-lang/weak-stack/tar.gz/9448f4a9a550900698c072fb39d77307763b5cd8}
+    name: '@bablr/weak-stack'
+    version: 0.0.0
     dev: true
