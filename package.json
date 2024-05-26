@@ -7,26 +7,34 @@
   },
   "type": "module",
   "exports": {
-    ".": "./lib/grammar.js"
+    ".": "./lib/grammar.generated.js"
   },
   "files": [
     "lib/**/*.js"
   ],
   "scripts": {
+    "build": "macrome build",
+    "watch": "macrome watch",
+    "clean": "macrome clean",
     "test": "node test/test.js"
   },
   "sideEffects": false,
   "dependencies": {
-    "@bablr/boot": "github:bablr-lang/boot#461dbb0adcc207acf74ff5862787c261e517b55f",
+    "@bablr/agast-vm-helpers": "0.1.0",
+    "@bablr/boot": "0.2.0",
     "@bablr/grammar": "github:bablr-lang/grammar#a280340581846073caf47fd531e7f365f4aef5f2",
-    "@bablr/helpers": "github:bablr-lang/bablr-helpers#cc1d37fa91f470dcf3bf1b4f6b05a8350dc52155"
+    "@bablr/helpers": "0.15.0",
+    "@bablr/language-blank-space": "github:bablr-lang/language-blank-space#54ef028985b7e8d2e9c419aaa19ebded9964e092",
+    "@babel/runtime": "^7.22.15"
   },
   "devDependencies": {
-    "@bablr/eslint-config-base": "github:bablr-lang/eslint-config-base#c040bc95f2dddac160628e4757a412016044b3ef",
+    "@bablr/eslint-config-base": "github:bablr-lang/eslint-config-base#49f5952efed27f94ee9b94340eb1563c440bf64e",
     "@bablr/hol-debug-log": "0.1.2",
+    "@bablr/macrome": "0.1.0",
+    "@bablr/macrome-generator-bablr": "0.1.1",
     "@bablr/test-runner": "github:bablr-lang/test-runner#4f1d33b990a66659830160596e7a8c23a2556520",
     "@qnighy/dedent": "0.1.1",
-    "bablr": "github:bablr-lang/bablr#8f0a68f8d78f4aed3f42746b4170449d6fbb2f35",
+    "bablr": "github:bablr-lang/bablr#57e16ba5f774176c94a1b16d5e1788eaa51c4b4b",
     "enhanced-resolve": "^5.12.0",
     "eslint": "^7.32.0",
     "eslint-import-resolver-enhanced-resolve": "^1.0.5",

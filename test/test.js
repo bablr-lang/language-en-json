@@ -12,7 +12,7 @@ export const testCases = [
         root:
         <String>
           open:
-          <Punctuator balanced='"' lexicalSpan='String'>
+          <Punctuator balanced='"' balancedSpan='String'>
             '"'
           </>
           content:
@@ -34,7 +34,7 @@ export const testCases = [
         root:
         <String>
           open:
-          <Punctuator balanced='"' lexicalSpan='String'>
+          <Punctuator balanced='"' balancedSpan='String'>
             '"'
           </>
           content:
@@ -54,7 +54,7 @@ export const testCases = [
         root:
         <String>
           open:
-          <Punctuator balanced='"' lexicalSpan='String'>
+          <Punctuator balanced='"' balancedSpan='String'>
             '"'
           </>
           content:
@@ -77,7 +77,7 @@ export const testCases = [
         root:
         <String>
           open:
-          <Punctuator balanced='"' lexicalSpan='String'>
+          <Punctuator balanced='"' balancedSpan='String'>
             '"'
           </>
           content:
@@ -100,7 +100,7 @@ export const testCases = [
         root:
         <String>
           open:
-          <Punctuator balanced='"' lexicalSpan='String'>
+          <Punctuator balanced='"' balancedSpan='String'>
             '"'
           </>
           content:
@@ -300,7 +300,7 @@ export const testCases = [
             key:
             <String>
               open:
-              <Punctuator balanced='"' lexicalSpan='String'>
+              <Punctuator balanced='"' balancedSpan='String'>
                 '"'
               </>
               content:
