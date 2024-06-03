@@ -161,6 +161,7 @@ describe('@bablr/language-json', () => {
           <Null>
             value: <*Keyword 'null' />
           </>
+          separators[]: null
           close: <*Punctuator ']' balancer />
         </>
       </>`);
@@ -237,6 +238,7 @@ describe('@bablr/language-json', () => {
               value: <*Keyword 'null' />
             </>
           </>
+          separators[]: null
           close: <*Punctuator '}' balancer />
         </>
       </>`);

@@ -7,7 +7,7 @@
   },
   "type": "module",
   "exports": {
-    ".": "./lib/grammar.generated.js"
+    ".": "./lib/grammar.js"
   },
   "files": [
     "lib/**/*.js"
@@ -20,18 +20,17 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@bablr/agast-vm-helpers": "0.1.0",
-    "@bablr/boot": "0.2.0",
-    "@bablr/helpers": "0.15.0",
-    "@bablr/language-blank-space": "0.1.0",
+    "@bablr/agast-vm-helpers": "0.1.1",
+    "@bablr/boot": "0.2.1",
+    "@bablr/helpers": "0.15.1",
+    "@bablr/language-blank-space": "0.1.1",
     "@babel/runtime": "^7.22.15"
   },
   "devDependencies": {
-    "@bablr/agast-helpers": "0.1.0",
+    "@bablr/agast-helpers": "0.1.1",
     "@bablr/eslint-config-base": "github:bablr-lang/eslint-config-base#49f5952efed27f94ee9b94340eb1563c440bf64e",
-    "@bablr/hol-debug-log": "0.1.2",
-    "@bablr/macrome": "0.1.0",
-    "@bablr/macrome-generator-bablr": "0.1.1",
+    "@bablr/macrome": "0.1.1",
+    "@bablr/macrome-generator-bablr": "0.2.0",
     "@qnighy/dedent": "0.1.1",
     "bablr": "0.1.1",
     "enhanced-resolve": "^5.12.0",
