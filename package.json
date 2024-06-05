@@ -27,7 +27,7 @@
     "@babel/runtime": "^7.22.15"
   },
   "devDependencies": {
-    "@bablr/agast-helpers": "0.1.1",
+    "@bablr/agast-helpers": "0.1.4",
     "@bablr/eslint-config-base": "github:bablr-lang/eslint-config-base#49f5952efed27f94ee9b94340eb1563c440bf64e",
     "@bablr/macrome": "0.1.1",
     "@bablr/macrome-generator-bablr": "0.2.0",
