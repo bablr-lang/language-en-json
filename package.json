@@ -23,7 +23,7 @@
     "@bablr/agast-vm-helpers": "0.1.1",
     "@bablr/boot": "0.2.1",
     "@bablr/helpers": "0.15.1",
-    "@bablr/language-blank-space": "0.1.1",
+    "@bablr/language-blank-space": "0.1.2",
     "@babel/runtime": "^7.22.15"
   },
   "devDependencies": {
