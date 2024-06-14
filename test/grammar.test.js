@@ -18,12 +18,12 @@ describe('@bablr/language-json', () => {
       <!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <String>
-          openToken: <*Punctuator '"' balanced='"' balancedSpan='String' />
+          openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
           content:
           <*StringContent>
             'hello'
           </>
-          closeToken: <*Punctuator '"' balancer />
+          closeToken: <~*Punctuator '"' balancer />
         </>
       </>\n`);
   });
@@ -33,11 +33,11 @@ describe('@bablr/language-json', () => {
       <!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <String>
-          openToken: <*Punctuator '"' balanced='"' balancedSpan='String' />
+          openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
           content:
           <*StringContent>
           </>
-          closeToken: <*Punctuator '"' balancer />
+          closeToken: <~*Punctuator '"' balancer />
         </>
       </>\n`);
   });
@@ -47,12 +47,12 @@ describe('@bablr/language-json', () => {
       <!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <String>
-          openToken: <*Punctuator '"' balanced='"' balancedSpan='String' />
+          openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
           content:
           <*StringContent>
             ' '
           </>
-          closeToken: <*Punctuator '"' balancer />
+          closeToken: <~*Punctuator '"' balancer />
         </>
       </>\n`);
   });
@@ -65,12 +65,12 @@ describe('@bablr/language-json', () => {
           ' '
         </>
         <String>
-          openToken: <*Punctuator '"' balanced='"' balancedSpan='String' />
+          openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
           content:
           <*StringContent>
             ' '
           </>
-          closeToken: <*Punctuator '"' balancer />
+          closeToken: <~*Punctuator '"' balancer />
           <#*Space:Space>
             ' '
           </>
@@ -84,15 +84,15 @@ describe('@bablr/language-json', () => {
     )`<!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <String>
-          openToken: <*Punctuator '"' balanced='"' balancedSpan='String' />
+          openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
           content:
           <*StringContent>
             <@EscapeSequence cooked='\n'>
-              sigilToken: <*Punctuator '\\' />
-              value: <*Keyword 'n' />
+              sigilToken: <~*Punctuator '\\' />
+              value: <~*Keyword 'n' />
             </>
           </>
-          closeToken: <*Punctuator '"' balancer />
+          closeToken: <~*Punctuator '"' balancer />
         </>
       </>${'\n'}`);
   });
@@ -102,7 +102,7 @@ describe('@bablr/language-json', () => {
       <!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <Boolean>
-          sigilToken: <*Keyword 'true' />
+          sigilToken: <~*Keyword 'true' />
         </>
       </>\n`);
   });
@@ -133,7 +133,7 @@ describe('@bablr/language-json', () => {
       <!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <Null>
-          sigilToken: <*Keyword 'null' />
+          sigilToken: <~*Keyword 'null' />
         </>
       </>\n`);
   });
@@ -143,10 +143,10 @@ describe('@bablr/language-json', () => {
       <!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <Array>
-          openToken: <*Punctuator '[' balanced=']' />
+          openToken: <~*Punctuator '[' balanced=']' />
           elements[]: null
           separators[]: null
-          closeToken: <*Punctuator ']' balancer />
+          closeToken: <~*Punctuator ']' balancer />
         </>
       </>\n`);
   });
@@ -156,13 +156,13 @@ describe('@bablr/language-json', () => {
       <!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <Array>
-          openToken: <*Punctuator '[' balanced=']' />
+          openToken: <~*Punctuator '[' balanced=']' />
           elements[]:
           <Null>
-            sigilToken: <*Keyword 'null' />
+            sigilToken: <~*Keyword 'null' />
           </>
           separators[]: null
-          closeToken: <*Punctuator ']' balancer />
+          closeToken: <~*Punctuator ']' balancer />
         </>
       </>\n`);
   });
@@ -197,20 +197,20 @@ describe('@bablr/language-json', () => {
       <!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <Array>
-          openToken: <*Punctuator '[' balanced=']' />
+          openToken: <~*Punctuator '[' balanced=']' />
           elements[]:
           <Boolean>
-            sigilToken: <*Keyword 'true' />
+            sigilToken: <~*Keyword 'true' />
           </>
-          separators[]: <*Punctuator ',' />
+          separators[]: <~*Punctuator ',' />
           <#*Space:Space>
             ' '
           </>
           elements[]:
           <Boolean>
-            sigilToken: <*Keyword 'false' />
+            sigilToken: <~*Keyword 'false' />
           </>
-          closeToken: <*Punctuator ']' balancer />
+          closeToken: <~*Punctuator ']' balancer />
         </>
       </>\n`);
   });
@@ -220,26 +220,26 @@ describe('@bablr/language-json', () => {
       <!0:cstml bablr-language='https://github.com/bablr-lang/language-json'>
       <>
         <Object>
-          openToken: <*Punctuator '{' balanced='}' />
+          openToken: <~*Punctuator '{' balanced='}' />
           properties[]:
           <Property>
             key:
             <String>
-              openToken: <*Punctuator '"' balanced='"' balancedSpan='String' />
+              openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
               content:
               <*StringContent>
                 'foo'
               </>
-              closeToken: <*Punctuator '"' balancer />
+              closeToken: <~*Punctuator '"' balancer />
             </>
-            sigilToken: <*Punctuator ':' />
+            sigilToken: <~*Punctuator ':' />
             value:
             <Null>
-              sigilToken: <*Keyword 'null' />
+              sigilToken: <~*Keyword 'null' />
             </>
           </>
           separators[]: null
-          closeToken: <*Punctuator '}' balancer />
+          closeToken: <~*Punctuator '}' balancer />
         </>
       </>\n`);
   });
