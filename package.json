@@ -24,7 +24,7 @@
     "@bablr/agast-vm-helpers": "0.3.0",
     "@bablr/boot": "0.4.0",
     "@bablr/helpers": "0.18.0",
-    "@bablr/language-en-blank-space": "0.2.0",
+    "@bablr/language-en-blank-space": "0.3.0",
     "@babel/runtime": "^7.22.15"
   },
   "devDependencies": {
