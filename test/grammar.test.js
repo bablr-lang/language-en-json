@@ -1,23 +1,35 @@
-import { buildTag } from 'bablr';
+import { buildTag, Context, AgastContext } from 'bablr';
 import { dedent } from '@qnighy/dedent';
 import * as language from '@bablr/language-en-json';
 import { debugEnhancers } from '@bablr/helpers/enhancers';
 import { expect } from 'expect';
-import { printPrettyCSTML } from '@bablr/agast-helpers/tree';
+import { printPrettyCSTML } from '@bablr/helpers/tree';
+import { buildFullyQualifiedSpamMatcher } from '@bablr/agast-vm-helpers';
 
-let enhancers = undefined;
+let enhancers = {};
 
 // enhancers = debugEnhancers;
 
+const ctx = Context.from(AgastContext.create(), language, enhancers.bablrProduction);
+
+const buildJSONTag = (type) => {
+  const matcher = buildFullyQualifiedSpamMatcher({}, language.canonicalURL, type);
+  return buildTag(ctx, matcher, undefined, { enhancers });
+};
+
+const print = (tree) => {
+  return printPrettyCSTML(tree, { ctx });
+};
+
 describe('@bablr/language-en-json', () => {
   describe('Expression', () => {
-    const json = (...args) =>
-      printPrettyCSTML(buildTag(language, 'Expression', undefined, enhancers)(...args));
+    const json = buildJSONTag('Expression');
 
     it('`"hello"`', () => {
-      expect(json`"hello"`).toEqual(dedent`\
+      expect(print(json`"hello"`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <String>
             openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
             content:
@@ -30,23 +42,23 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`""`', () => {
-      expect(json`""`).toEqual(dedent`\
+      expect(print(json`""`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <String>
             openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
-            content:
-            <*StringContent>
-            </>
+            content: <*StringContent />
             closeToken: <~*Punctuator '"' balancer />
           </>
         </>\n`);
     });
 
     it('`" "`', () => {
-      expect(json`" "`).toEqual(dedent`\
+      expect(print(json`" "`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <String>
             openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
             content:
@@ -59,12 +71,13 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('` " " `', () => {
-      expect(json` " " `).toEqual(dedent`\
+      expect(print(json` " " `)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
           <#*Space:Space>
             ' '
           </>
+          root:
           <String>
             openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
             content:
@@ -80,10 +93,11 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`"\\n"`', () => {
-      expect(json`"\n"`).toEqual(dedent(
+      expect(print(json`"\n"`)).toEqual(dedent(
         String.raw,
       )`<!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <String>
             openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
             content:
@@ -99,9 +113,10 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`true`', () => {
-      expect(json`true`).toEqual(dedent`\
+      expect(print(json`true`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <Boolean>
             sigilToken: <~*Keyword 'true' />
           </>
@@ -109,9 +124,10 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`1`', () => {
-      expect(json`1`).toEqual(dedent`\
+      expect(print(json`1`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <Number span='Number'>
             wholePart:
             <Integer>
@@ -130,9 +146,10 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`null`', () => {
-      expect(json`null`).toEqual(dedent`\
+      expect(print(json`null`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <Null>
             sigilToken: <~*Keyword 'null' />
           </>
@@ -140,9 +157,10 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`[]`', () => {
-      expect(json`[]`).toEqual(dedent`\
+      expect(print(json`[]`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <Array>
             openToken: <~*Punctuator '[' balanced=']' />
             elements[]: null
@@ -153,9 +171,10 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`[null]`', () => {
-      expect(json`[null]`).toEqual(dedent`\
+      expect(print(json`[null]`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <Array>
             openToken: <~*Punctuator '[' balanced=']' />
             elements[]:
@@ -169,9 +188,10 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`21`', () => {
-      expect(json`21`).toEqual(dedent`\
+      expect(print(json`21`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <Number span='Number'>
             wholePart:
             <Integer>
@@ -191,9 +211,10 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`[true, false]`', () => {
-      expect(json`[true, false]`).toEqual(dedent`\
+      expect(print(json`[true, false]`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <Array>
             openToken: <~*Punctuator '[' balanced=']' />
             elements[]:
@@ -214,9 +235,10 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`{"foo":null}`', () => {
-      expect(json`{"foo":null}`).toEqual(dedent`\
+      expect(print(json`{"foo":null}`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <>
+          root:
           <Object>
             openToken: <~*Punctuator '{' balanced='}' />
             properties[]:
