@@ -112,6 +112,26 @@ describe('@bablr/language-en-json', () => {
         </>${'\n'}`);
     });
 
+    it('`"\\""`', () => {
+      expect(print(json`"\""`)).toEqual(dedent(
+        String.raw,
+      )`<!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
+        <>
+          root:
+          <String>
+            openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
+            content:
+            <*StringContent>
+              <@EscapeSequence cooked='\n'>
+                sigilToken: <~*Punctuator '\\' />
+                value: <~*Keyword 'n' />
+              </>
+            </>
+            closeToken: <~*Punctuator '"' balancer />
+          </>
+        </>${'\n'}`);
+    });
+
     it('`true`', () => {
       expect(print(json`true`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
@@ -262,6 +282,76 @@ describe('@bablr/language-en-json', () => {
             closeToken: <~*Punctuator '}' balancer />
           </>
         </>\n`);
+    });
+
+    it('`[[]]`', () => {
+      expect(print(json`{"foo":null}`)).toEqual(dedent`\
+        <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
+        <>
+          root:
+          <Object>
+            openToken: <~*Punctuator '{' balanced='}' />
+            properties[]:
+            <Property>
+              key:
+              <String>
+                openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
+                content:
+                <*StringContent>
+                  'foo'
+                </>
+                closeToken: <~*Punctuator '"' balancer />
+              </>
+              sigilToken: <~*Punctuator ':' />
+              value:
+              <Null>
+                sigilToken: <~*Keyword 'null' />
+              </>
+            </>
+            separators[]: null
+            closeToken: <~*Punctuator '}' balancer />
+          </>
+        </>\n`);
+    });
+
+    it('`{"key":[{}]}`', () => {
+      expect(print(json`{"key":[{}]}`)).toEqual(dedent`\
+        <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
+        <>
+          root:
+          <Object>
+            openToken: <~*Punctuator '{' balanced='}' />
+            properties[]:
+            <Property>
+              key:
+              <String>
+                openToken: <~*Punctuator '\"' balanced='\"' balancedSpan='String' />
+                content:
+                <*StringContent>
+                  'key'
+                </>
+                closeToken: <~*Punctuator '\"' balancer />
+              </>
+              sigilToken: <~*Punctuator ':' />
+              value:
+              <Array>
+                openToken: <~*Punctuator '[' balanced=']' />
+                elements[]:
+                <Object>
+                  openToken: <~*Punctuator '{' balanced='}' />
+                  properties[]: null
+                  separators[]: null
+                  closeToken: <~*Punctuator '}' balancer />
+                </>
+                separators[]: null
+                closeToken: <~*Punctuator ']' balancer />
+              </>
+            </>
+            separators[]: null
+            closeToken: <~*Punctuator '}' balancer />
+          </>
+        </>
+        `);
     });
   });
 });
