@@ -103,8 +103,8 @@ describe('@bablr/language-en-json', () => {
             content:
             <*StringContent>
               <@EscapeSequence cooked='\n'>
-                sigilToken: <~*Punctuator '\\' />
-                value: <~*Keyword 'n' />
+                sigilToken: <~*Punctuator '\\' openSpan='Escape' />
+                value: <~*Keyword 'n' closeSpan='Escape' />
               </>
             </>
             closeToken: <~*Punctuator '"' balancer />
@@ -122,9 +122,9 @@ describe('@bablr/language-en-json', () => {
             openToken: <~*Punctuator '"' balanced='"' balancedSpan='String' />
             content:
             <*StringContent>
-              <@EscapeSequence cooked='\n'>
-                sigilToken: <~*Punctuator '\\' />
-                value: <~*Keyword 'n' />
+              <@EscapeSequence cooked='"'>
+                sigilToken: <~*Punctuator '\\' openSpan='Escape' />
+                value: <~*Keyword '"' closeSpan='Escape' />
               </>
             </>
             closeToken: <~*Punctuator '"' balancer />
