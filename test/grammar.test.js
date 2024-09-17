@@ -183,8 +183,8 @@ describe('@bablr/language-en-json', () => {
           root:
           <Array>
             openToken: <~*Punctuator '[' balanced=']' />
-            elements[]: null
-            separators[]: null
+            separators[]: []
+            elements[]: []
             closeToken: <~*Punctuator ']' balancer />
           </>
         </>\n`);
@@ -197,11 +197,12 @@ describe('@bablr/language-en-json', () => {
           root:
           <Array>
             openToken: <~*Punctuator '[' balanced=']' />
+            separators[]: []
+            elements[]: []
             elements[]:
             <Null>
               sigilToken: <~*Keyword 'null' />
             </>
-            separators[]: null
             closeToken: <~*Punctuator ']' balancer />
           </>
         </>\n`);
@@ -237,6 +238,8 @@ describe('@bablr/language-en-json', () => {
           root:
           <Array>
             openToken: <~*Punctuator '[' balanced=']' />
+            separators[]: []
+            elements[]: []
             elements[]:
             <Boolean>
               sigilToken: <~*Keyword 'true' />
@@ -261,6 +264,8 @@ describe('@bablr/language-en-json', () => {
           root:
           <Object>
             openToken: <~*Punctuator '{' balanced='}' />
+            separators[]: []
+            properties[]: []
             properties[]:
             <Property>
               key:
@@ -278,7 +283,6 @@ describe('@bablr/language-en-json', () => {
                 sigilToken: <~*Keyword 'null' />
               </>
             </>
-            separators[]: null
             closeToken: <~*Punctuator '}' balancer />
           </>
         </>\n`);
@@ -291,6 +295,8 @@ describe('@bablr/language-en-json', () => {
           root:
           <Object>
             openToken: <~*Punctuator '{' balanced='}' />
+            separators[]: []
+            properties[]: []
             properties[]:
             <Property>
               key:
@@ -308,7 +314,6 @@ describe('@bablr/language-en-json', () => {
                 sigilToken: <~*Keyword 'null' />
               </>
             </>
-            separators[]: null
             closeToken: <~*Punctuator '}' balancer />
           </>
         </>\n`);
@@ -321,6 +326,8 @@ describe('@bablr/language-en-json', () => {
           root:
           <Object>
             openToken: <~*Punctuator '{' balanced='}' />
+            separators[]: []
+            properties[]: []
             properties[]:
             <Property>
               key:
@@ -336,18 +343,18 @@ describe('@bablr/language-en-json', () => {
               value:
               <Array>
                 openToken: <~*Punctuator '[' balanced=']' />
+                separators[]: []
+                elements[]: []
                 elements[]:
                 <Object>
                   openToken: <~*Punctuator '{' balanced='}' />
-                  properties[]: null
-                  separators[]: null
+                  separators[]: []
+                  properties[]: []
                   closeToken: <~*Punctuator '}' balancer />
                 </>
-                separators[]: null
                 closeToken: <~*Punctuator ']' balancer />
               </>
             </>
-            separators[]: null
             closeToken: <~*Punctuator '}' balancer />
           </>
         </>
