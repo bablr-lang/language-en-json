@@ -1,6 +1,6 @@
 {
   "name": "@bablr/language-en-json",
-  "version": "0.0.0",
+  "version": "0.7.0",
   "description": "A BABLR language for JSON",
   "engines": {
     "node": ">=12.0.0"
