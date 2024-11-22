@@ -4,7 +4,7 @@ import * as language from '@bablr/language-en-json';
 import { debugEnhancers } from '@bablr/helpers/enhancers';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
-import { buildFullyQualifiedSpamMatcher } from '@bablr/agast-vm-helpers';
+import { buildFullyQualifiedSpamMatcher } from '@bablr/helpers/builders';
 
 let enhancers = {};
 
