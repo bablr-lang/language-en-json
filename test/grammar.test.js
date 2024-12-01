@@ -1,10 +1,11 @@
 import { buildTag, Context, AgastContext } from 'bablr';
+import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
 import * as language from '@bablr/language-en-json';
 import { debugEnhancers } from '@bablr/helpers/enhancers';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
-import { buildFullyQualifiedSpamMatcher } from '@bablr/agast-vm-helpers';
+import { buildIdentifier, buildString } from '@bablr/agast-vm-helpers';
 
 let enhancers = {};
 
@@ -13,7 +14,7 @@ let enhancers = {};
 const ctx = Context.from(AgastContext.create(), language, enhancers.bablrProduction);
 
 const buildJSONTag = (type) => {
-  const matcher = buildFullyQualifiedSpamMatcher({ hasGap: true }, language.canonicalURL, type);
+  const matcher = spam`<$${buildString(language.canonicalURL)}:${buildIdentifier(type)} />`;
   return buildTag(ctx, matcher, undefined, { enhancers });
 };
 
@@ -264,29 +265,22 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`[[]]`', () => {
-      expect(print(json`{"foo":null}`)).toEqual(dedent`\
+      expect(print(json`[[]]`)).toEqual(dedent`\
         <!0:cstml bablr-language='https://github.com/bablr-lang/language-en-json'>
         <$>
           .:
-          <$Object>
-            openToken: <*Punctuator '{' balanced='}' />
+          <$Array>
+            openToken: <*Punctuator '[' balanced=']' />
             separators[]: []
-            properties[]$: []
-            properties[]$:
-            <$Property>
-              key$:
-              <$String>
-                openToken: <*Punctuator '"' balanced='"' balancedSpan='String' />
-                content: <*StringContent 'foo' />
-                closeToken: <*Punctuator '"' balancer />
-              </>
-              sigilToken: <*Punctuator ':' />
-              value$:
-              <$Null>
-                sigilToken: <*Keyword 'null' />
-              </>
+            elements[]$: []
+            elements[]$:
+            <$Array>
+              openToken: <*Punctuator '[' balanced=']' />
+              separators[]: []
+              elements[]$: []
+              closeToken: <*Punctuator ']' balancer />
             </>
-            closeToken: <*Punctuator '}' balancer />
+            closeToken: <*Punctuator ']' balancer />
           </>
         </>\n`);
     });
