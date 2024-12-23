@@ -1,4 +1,4 @@
-import { buildTag, Context, AgastContext } from 'bablr';
+import { buildTag, Context } from 'bablr';
 import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
 import * as language from '@bablr/language-en-json';
@@ -11,7 +11,7 @@ let enhancers = {};
 
 // enhancers = debugEnhancers;
 
-const ctx = Context.from(AgastContext.create(), language, enhancers.bablrProduction);
+const ctx = Context.from(language, enhancers.bablrProduction);
 
 const buildJSONTag = (type) => {
   const matcher = spam`<$${buildString(language.canonicalURL)}:${buildIdentifier(type)} />`;
