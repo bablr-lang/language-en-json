@@ -2,7 +2,6 @@ import { buildTag, Context } from 'bablr';
 import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
 import * as language from '@bablr/language-en-json';
-import { debugEnhancers } from '@bablr/helpers/enhancers';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
 import { buildIdentifier, buildString } from '@bablr/agast-vm-helpers';
@@ -90,7 +89,8 @@ describe('@bablr/language-en-json', () => {
             openToken: <*Punctuator '"' balanced='"' balancedSpan='String' />
             content:
             <*StringContent>
-              @: <EscapeSequence cooked='\n'>
+              @:
+              <EscapeSequence cooked='\n'>
                 sigilToken: <*Punctuator '\\' openSpan='Escape' />
                 code: <*Keyword 'n' closeSpan='Escape' />
               </>
@@ -110,7 +110,8 @@ describe('@bablr/language-en-json', () => {
             openToken: <*Punctuator '"' balanced='"' balancedSpan='String' />
             content:
             <*StringContent>
-              @: <EscapeSequence cooked='"'>
+              @:
+              <EscapeSequence cooked='"'>
                 sigilToken: <*Punctuator '\\' openSpan='Escape' />
                 code: <*Keyword '"' closeSpan='Escape' />
               </>
@@ -140,7 +141,7 @@ describe('@bablr/language-en-json', () => {
             wholePart:
             <$Integer>
               signToken: null
-              value: <*UnsignedInteger '1' noDoubleZero />
+              value: <*UnsignedInteger '1' />
             </>
             fractionalSeparatorToken: null
             fractionalPart: null
@@ -168,7 +169,7 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Array>
             openToken: <*Punctuator '[' balanced=']' />
-            separators[]: []
+            separatorTokens[]: []
             elements[]$: []
             closeToken: <*Punctuator ']' balancer />
           </>
@@ -182,7 +183,7 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Array>
             openToken: <*Punctuator '[' balanced=']' />
-            separators[]: []
+            separatorTokens[]: []
             elements[]$: []
             elements[]$:
             <$Null>
@@ -202,7 +203,7 @@ describe('@bablr/language-en-json', () => {
             wholePart:
             <$Integer>
               signToken: null
-              value: <*UnsignedInteger '21' noDoubleZero />
+              value: <*UnsignedInteger '21' />
             </>
             fractionalSeparatorToken: null
             fractionalPart: null
@@ -219,13 +220,13 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Array>
             openToken: <*Punctuator '[' balanced=']' />
-            separators[]: []
+            separatorTokens[]: []
             elements[]$: []
             elements[]$:
             <$Boolean>
               sigilToken: <*Keyword 'true' />
             </>
-            separators[]: <*Punctuator ',' />
+            separatorTokens[]: <*Punctuator ',' />
             #: <*Space:Space ' ' />
             elements[]$:
             <$Boolean>
@@ -243,7 +244,7 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Object>
             openToken: <*Punctuator '{' balanced='}' />
-            separators[]: []
+            separatorTokens[]: []
             properties[]$: []
             properties[]$:
             <$Property>
@@ -271,12 +272,12 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Array>
             openToken: <*Punctuator '[' balanced=']' />
-            separators[]: []
+            separatorTokens[]: []
             elements[]$: []
             elements[]$:
             <$Array>
               openToken: <*Punctuator '[' balanced=']' />
-              separators[]: []
+              separatorTokens[]: []
               elements[]$: []
               closeToken: <*Punctuator ']' balancer />
             </>
@@ -292,7 +293,7 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Object>
             openToken: <*Punctuator '{' balanced='}' />
-            separators[]: []
+            separatorTokens[]: []
             properties[]$: []
             properties[]$:
             <$Property>
@@ -306,12 +307,12 @@ describe('@bablr/language-en-json', () => {
               value$:
               <$Array>
                 openToken: <*Punctuator '[' balanced=']' />
-                separators[]: []
+                separatorTokens[]: []
                 elements[]$: []
                 elements[]$:
                 <$Object>
                   openToken: <*Punctuator '{' balanced='}' />
-                  separators[]: []
+                  separatorTokens[]: []
                   properties[]$: []
                   closeToken: <*Punctuator '}' balancer />
                 </>
