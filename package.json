@@ -1,6 +1,6 @@
 {
   "name": "@bablr/language-en-json",
-  "version": "0.0.0",
+  "version": "0.8.0",
   "description": "A BABLR language for JSON",
   "engines": {
     "node": ">=12.0.0"
@@ -10,9 +10,7 @@
     ".": "./lib/grammar.js",
     "./package.json": "./package.json"
   },
-  "files": [
-    "lib/**/*.js"
-  ],
+  "files": ["lib/**/*.js"],
   "scripts": {
     "build": "macrome build",
     "watch": "macrome watch",
@@ -43,12 +41,7 @@
     "mocha": "^10.4.0",
     "prettier": "^2.0.5"
   },
-  "keywords": [
-    "bablr-language",
-    "grammar",
-    "english",
-    "json"
-  ],
+  "keywords": ["bablr-language", "grammar", "english", "json"],
   "repository": "git@github.com:bablr-lang/language-en-json.git",
   "homepage": "https://github.com/bablr-lang/language-en-json",
   "author": "Conrad Buck <conartist6@gmail.com>",
