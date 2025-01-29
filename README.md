@@ -1,3 +1,3 @@
 # @bablr/language-en-json
 
-A BABLR language for JSON
+A BABLR language for parsing CSTML-flavored JSON

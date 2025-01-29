@@ -1,7 +1,7 @@
 {
-  "name": "@bablr/language-en-json",
+  "name": "@bablr/language-en-cstml-json",
   "version": "0.0.0",
-  "description": "A BABLR language for JSON",
+  "description": "A BABLR language for CSTML-flavored JSON",
   "engines": {
     "node": ">=12.0.0"
   },
@@ -21,10 +21,10 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@bablr/agast-helpers": "^0.5.3",
+    "@bablr/agast-helpers": "^0.5.0",
     "@bablr/agast-vm-helpers": "^0.5.0",
     "@bablr/boot": "^0.6.0",
-    "@bablr/helpers": "^0.20.5",
+    "@bablr/helpers": "^0.20.0",
     "@bablr/language-en-blank-space": "^0.5.0",
     "@babel/runtime": "^7.22.15"
   },
@@ -46,11 +46,10 @@
   "keywords": [
     "bablr-language",
     "grammar",
-    "english",
-    "json"
+    "english"
   ],
-  "repository": "git@github.com:bablr-lang/language-en-json.git",
-  "homepage": "https://github.com/bablr-lang/language-en-json",
+  "repository": "git@github.com:bablr-lang/language-en-cstml-json.git",
+  "homepage": "https://github.com/bablr-lang/language-en-cstml-json",
   "author": "Conrad Buck <conartist6@gmail.com>",
   "license": "MIT"
 }
