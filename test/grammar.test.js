@@ -33,7 +33,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content: <*StringContent 'hello' />
+            content$: <*StringContent 'hello' />
             closeToken: <*Punctuator '"' { balancer: true } />
           </>
         </>\n`);
@@ -46,7 +46,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content: <*StringContent />
+            content$: <*StringContent />
             closeToken: <*Punctuator '"' { balancer: true } />
           </>
         </>\n`);
@@ -59,7 +59,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content: <*StringContent ' ' />
+            content$: <*StringContent ' ' />
             closeToken: <*Punctuator '"' { balancer: true } />
           </>
         </>\n`);
@@ -73,7 +73,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content: <*StringContent ' ' />
+            content$: <*StringContent ' ' />
             closeToken: <*Punctuator '"' { balancer: true } />
           </>
           #: <*Space:Space ' ' />
@@ -88,7 +88,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content:
+            content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: '\n' }>
@@ -109,7 +109,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content:
+            content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: '"' }>
@@ -129,7 +129,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator "'" { balanced: "'", balancedSpan: 'String:Single' } />
-            content: <*StringContent '"' />
+            content$: <*StringContent '"' />
             closeToken: <*Punctuator "'" { balancer: true } />
           </>
         </>\n`);
@@ -142,7 +142,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content:
+            content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: '"' }>
@@ -162,7 +162,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content:
+            content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: '4660' }>
@@ -188,7 +188,7 @@ describe('@bablr/language-en-cstml-json', () => {
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content:
+            content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: '1' }>
@@ -224,15 +224,15 @@ describe('@bablr/language-en-cstml-json', () => {
         <$>
           .:
           <$Number { span: 'Number' }>
-            wholePart:
+            wholePart$:
             <$Integer>
               signToken: null
-              value: <*UnsignedInteger '1' />
+              value$: <*UnsignedInteger '1' />
             </>
             fractionalSeparatorToken: null
-            fractionalPart: null
+            fractionalPart$: null
             exponentSeparatorToken: null
-            exponentPart: null
+            exponentPart$: null
           </>
         </>\n`);
     });
@@ -286,15 +286,15 @@ describe('@bablr/language-en-cstml-json', () => {
         <$>
           .:
           <$Number { span: 'Number' }>
-            wholePart:
+            wholePart$:
             <$Integer>
               signToken: null
-              value: <*UnsignedInteger '21' />
+              value$: <*UnsignedInteger '21' />
             </>
             fractionalSeparatorToken: null
-            fractionalPart: null
+            fractionalPart$: null
             exponentSeparatorToken: null
-            exponentPart: null
+            exponentPart$: null
           </>
         </>\n`);
     });
