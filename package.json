@@ -1,7 +1,7 @@
 {
-  "name": "@bablr/language-en-cstml-json",
+  "name": "@bablr/language-en-json",
   "version": "0.0.0",
-  "description": "A BABLR language for CSTML-flavored JSON",
+  "description": "A BABLR language for JSON",
   "engines": {
     "node": ">=12.0.0"
   },
@@ -48,8 +48,8 @@
     "grammar",
     "english"
   ],
-  "repository": "git@github.com:bablr-lang/language-en-cstml-json.git",
-  "homepage": "https://github.com/bablr-lang/language-en-cstml-json",
+  "repository": "git@github.com:bablr-lang/language-en-json.git",
+  "homepage": "https://github.com/bablr-lang/language-en-json",
   "author": "Conrad Buck <conartist6@gmail.com>",
   "license": "MIT"
 }
