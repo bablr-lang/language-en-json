@@ -22,7 +22,7 @@ const print = (tree) => {
   return printPrettyCSTML(tree, { ctx });
 };
 
-describe('@bablr/language-en-cstml-json', () => {
+describe('@bablr/language-en-json', () => {
   describe('Expression', () => {
     const json = buildJSONTag('Expression');
 
@@ -271,7 +271,7 @@ describe('@bablr/language-en-cstml-json', () => {
             openToken: <*Punctuator '[' { balanced: ']' } />
             separatorTokens[]: []
             elements[]$: []
-            elements[]$:
+            elements[]+$:
             <$Null>
               sigilToken: <*Keyword 'null' />
             </>
@@ -308,13 +308,13 @@ describe('@bablr/language-en-cstml-json', () => {
             openToken: <*Punctuator '[' { balanced: ']' } />
             separatorTokens[]: []
             elements[]$: []
-            elements[]$:
+            elements[]+$:
             <$Boolean>
               sigilToken: <*Keyword 'true' />
             </>
             separatorTokens[]: <*Punctuator ',' />
             #: <*Space:Space ' ' />
-            elements[]$:
+            elements[]+$:
             <$Boolean>
               sigilToken: <*Keyword 'false' />
             </>
@@ -336,7 +336,7 @@ describe('@bablr/language-en-cstml-json', () => {
             <$Property>
               key$: <*Identifier 'foo' />
               sigilToken: <*Punctuator ':' />
-              value$:
+              value+$:
               <$Null>
                 sigilToken: <*Keyword 'null' />
               </>
@@ -355,7 +355,7 @@ describe('@bablr/language-en-cstml-json', () => {
             openToken: <*Punctuator '[' { balanced: ']' } />
             separatorTokens[]: []
             elements[]$: []
-            elements[]$:
+            elements[]+$:
             <$Array>
               openToken: <*Punctuator '[' { balanced: ']' } />
               separatorTokens[]: []
@@ -380,12 +380,12 @@ describe('@bablr/language-en-cstml-json', () => {
             <$Property>
               key$: <*Identifier 'key' />
               sigilToken: <*Punctuator ':' />
-              value$:
+              value+$:
               <$Array>
                 openToken: <*Punctuator '[' { balanced: ']' } />
                 separatorTokens[]: []
                 elements[]$: []
-                elements[]$:
+                elements[]+$:
                 <$Object>
                   openToken: <*Punctuator '{' { balanced: '}' } />
                   separatorTokens[]: []
