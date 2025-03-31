@@ -156,7 +156,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it(`\`${raw`"\u1234"`}\``, () => {
-      expect(print(json`"\u1234"`)).toEqual(dedent`\
+      expect(print(json`"\u123f"`)).toEqual(dedent`\
         <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$>
           .:
@@ -165,13 +165,13 @@ describe('@bablr/language-en-json', () => {
             content$:
             <*StringContent>
               @:
-              <EscapeSequence { cooked: '4660' }>
+              <EscapeSequence { cooked: 'ሿ' }>
                 sigilToken: <*Punctuator '${'\\\\'}' { openSpan: 'Escape' } />
                 code:
                 <$EscapeCode { closeSpan: 'Escape' }>
                   typeToken: <*Keyword 'u' />
                   openToken: null
-                  value$: <*UnsignedInteger '1234' />
+                  value$: <*UnsignedHexInteger '123f' />
                   closeToken: null
                 </>
               </>
@@ -191,13 +191,13 @@ describe('@bablr/language-en-json', () => {
             content$:
             <*StringContent>
               @:
-              <EscapeSequence { cooked: '1' }>
+              <EscapeSequence { cooked: '${'\\'}u0001' }>
                 sigilToken: <*Punctuator '${'\\\\'}' { openSpan: 'Escape' } />
                 code:
                 <$EscapeCode { closeSpan: 'Escape' }>
                   typeToken: <*Keyword 'u' />
                   openToken: <*Punctuator '{' { balanced: '}' } />
-                  value$: <*UnsignedInteger '1' />
+                  value$: <*UnsignedHexInteger '1' />
                   closeToken: <*Punctuator '}' { balancer: true } />
                 </>
               </>
