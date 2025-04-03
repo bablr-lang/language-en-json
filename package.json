@@ -21,11 +21,11 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@bablr/agast-helpers": "0.6.0",
-    "@bablr/agast-vm-helpers": "0.6.0",
-    "@bablr/boot": "0.7.0",
-    "@bablr/helpers": "0.21.1",
-    "@bablr/language-en-blank-space": "0.6.0",
+    "@bablr/agast-helpers": "0.7.1",
+    "@bablr/agast-vm-helpers": "0.7.1",
+    "@bablr/boot": "0.8.1",
+    "@bablr/helpers": "0.22.1",
+    "@bablr/language-en-blank-space": "0.7.0",
     "@babel/runtime": "^7.22.15"
   },
   "devDependencies": {
