@@ -13,8 +13,7 @@ let { raw } = String;
 
 const ctx = Context.from(language, enhancers.bablrProduction);
 
-const buildJSONTag = (type) => {
-  const matcher = spam`<$${buildString(language.canonicalURL)}:${buildIdentifier(type)} />`;
+const buildJSONTag = (matcher) => {
   return buildTag(ctx, matcher, undefined, { enhancers });
 };
 
@@ -24,7 +23,7 @@ const print = (tree) => {
 
 describe('@bablr/language-en-json', () => {
   describe('Expression', () => {
-    const json = buildJSONTag('Expression');
+    const json = buildJSONTag(spam`<$__${buildString(language.canonicalURL)}:Expression />`);
 
     it('`"hello"`', () => {
       expect(print(json`"hello"`)).toEqual(dedent`\
@@ -256,7 +255,7 @@ describe('@bablr/language-en-json', () => {
           <$Array>
             openToken: <*Punctuator '[' { balanced: ']' } />
             separatorTokens[]: []
-            elements[]$: []
+            elements[]+$: []
             closeToken: <*Punctuator ']' { balancer: true } />
           </>
         </>\n`);
@@ -270,7 +269,7 @@ describe('@bablr/language-en-json', () => {
           <$Array>
             openToken: <*Punctuator '[' { balanced: ']' } />
             separatorTokens[]: []
-            elements[]$: []
+            elements[]+$: []
             elements[]+$:
             <$Null>
               sigilToken: <*Keyword 'null' />
@@ -307,7 +306,7 @@ describe('@bablr/language-en-json', () => {
           <$Array>
             openToken: <*Punctuator '[' { balanced: ']' } />
             separatorTokens[]: []
-            elements[]$: []
+            elements[]+$: []
             elements[]+$:
             <$Boolean>
               sigilToken: <*Keyword 'true' />
@@ -354,12 +353,12 @@ describe('@bablr/language-en-json', () => {
           <$Array>
             openToken: <*Punctuator '[' { balanced: ']' } />
             separatorTokens[]: []
-            elements[]$: []
+            elements[]+$: []
             elements[]+$:
             <$Array>
               openToken: <*Punctuator '[' { balanced: ']' } />
               separatorTokens[]: []
-              elements[]$: []
+              elements[]+$: []
               closeToken: <*Punctuator ']' { balancer: true } />
             </>
             closeToken: <*Punctuator ']' { balancer: true } />
@@ -384,7 +383,7 @@ describe('@bablr/language-en-json', () => {
               <$Array>
                 openToken: <*Punctuator '[' { balanced: ']' } />
                 separatorTokens[]: []
-                elements[]$: []
+                elements[]+$: []
                 elements[]+$:
                 <$Object>
                   openToken: <*Punctuator '{' { balanced: '}' } />
