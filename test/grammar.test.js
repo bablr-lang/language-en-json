@@ -121,19 +121,6 @@ describe('@bablr/language-en-json', () => {
         </>${'\n'}`);
     });
 
-    it(`\`'"'\``, () => {
-      expect(print(json`'"'`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
-        <$_>
-          .:
-          <$String>
-            openToken: <*Punctuator "'" { balanced: "'", balancedSpan: 'String:Single' } />
-            content$: <*StringContent '"' />
-            closeToken: <*Punctuator "'" { balancer: true } />
-          </>
-        </>\n`);
-    });
-
     it(`\`${raw`"\""`}\``, () => {
       expect(print(json`"\""`)).toEqual(dedent`\
         <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
@@ -322,8 +309,8 @@ describe('@bablr/language-en-json', () => {
         </>\n`);
     });
 
-    it('`{foo:null}`', () => {
-      expect(print(json`{foo:null}`)).toEqual(dedent`\
+    it('`{"foo":null}`', () => {
+      expect(print(json`{"foo":null}`)).toEqual(dedent`\
         <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
@@ -333,7 +320,12 @@ describe('@bablr/language-en-json', () => {
             properties[]$: []
             properties[]$:
             <$Property>
-              key$: <*Identifier 'foo' />
+              key$:
+              <$String>
+                openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+                content$: <*StringContent 'foo' />
+                closeToken: <*Punctuator '"' { balancer: true } />
+              </>
               sigilToken: <*Punctuator ':' />
               value+$:
               <$Null>
@@ -366,8 +358,8 @@ describe('@bablr/language-en-json', () => {
         </>\n`);
     });
 
-    it('`{key:[{}]}`', () => {
-      expect(print(json`{key:[{}]}`)).toEqual(dedent`\
+    it('`{"key":[{}]}`', () => {
+      expect(print(json`{"key":[{}]}`)).toEqual(dedent`\
         <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
@@ -377,7 +369,12 @@ describe('@bablr/language-en-json', () => {
             properties[]$: []
             properties[]$:
             <$Property>
-              key$: <*Identifier 'key' />
+              key$:
+              <$String>
+                openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+                content$: <*StringContent 'key' />
+                closeToken: <*Punctuator '"' { balancer: true } />
+              </>
               sigilToken: <*Punctuator ':' />
               value+$:
               <$Array>
