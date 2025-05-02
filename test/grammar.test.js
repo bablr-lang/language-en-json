@@ -154,10 +154,10 @@ describe('@bablr/language-en-json', () => {
               <EscapeSequence { cooked: 'ሿ' }>
                 sigilToken: <*Punctuator '${'\\\\'}' { openSpan: 'Escape' } />
                 code:
-                <$EscapeCode { closeSpan: 'Escape' }>
+                <EscapeCode { closeSpan: 'Escape' }>
                   typeToken: <*Keyword 'u' />
                   openToken: null
-                  value$: <*UnsignedHexInteger '123f' />
+                  value: <*UnsignedHexInteger '123f' />
                   closeToken: null
                 </>
               </>
@@ -180,10 +180,10 @@ describe('@bablr/language-en-json', () => {
               <EscapeSequence { cooked: '${'\\'}u0001' }>
                 sigilToken: <*Punctuator '${'\\\\'}' { openSpan: 'Escape' } />
                 code:
-                <$EscapeCode { closeSpan: 'Escape' }>
+                <EscapeCode { closeSpan: 'Escape' }>
                   typeToken: <*Keyword 'u' />
                   openToken: <*Punctuator '{' { balanced: '}' } />
-                  value$: <*UnsignedHexInteger '1' />
+                  value: <*UnsignedHexInteger '1' />
                   closeToken: <*Punctuator '}' { balancer: true } />
                 </>
               </>
