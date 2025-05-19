@@ -68,14 +68,14 @@ describe('@bablr/language-en-json', () => {
       expect(print(json` " " `)).toEqual(dedent`\
         <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
-          #: <*Space:Space ' ' />
+          #: :Space: <*Space ' ' />
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$: <*StringContent ' ' />
             closeToken: <*Punctuator '"' { balancer: true } />
           </>
-          #: <*Space:Space ' ' />
+          #: :Space: <*Space ' ' />
         </>\n`);
     });
 
@@ -299,7 +299,7 @@ describe('@bablr/language-en-json', () => {
               sigilToken: <*Keyword 'true' />
             </>
             separatorTokens[]: <*Punctuator ',' />
-            #: <*Space:Space ' ' />
+            #: :Space: <*Space ' ' />
             elements[]+$:
             <$Boolean>
               sigilToken: <*Keyword 'false' />
