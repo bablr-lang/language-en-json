@@ -1,29 +1,26 @@
-import { buildTag, Context } from 'bablr';
+import { buildTag } from 'bablr';
 import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
 import * as language from '@bablr/language-en-json';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
-import { buildIdentifier, buildString } from '@bablr/helpers/builders';
 
 let enhancers = {};
 let { raw } = String;
 
 // enhancers = debugEnhancers;
 
-const ctx = Context.from(language, enhancers.bablrProduction);
-
 const buildJSONTag = (matcher) => {
-  return buildTag(ctx, matcher, undefined, { enhancers });
+  return buildTag(language, matcher, undefined, { enhancers });
 };
 
 const print = (tree) => {
-  return printPrettyCSTML(tree.node, { ctx });
+  return printPrettyCSTML(tree.node);
 };
 
 describe('@bablr/language-en-json', () => {
   describe('Expression', () => {
-    const json = buildJSONTag(spam`<$__${buildString(language.canonicalURL)}:Expression />`);
+    const json = buildJSONTag(spam`<$__Expression />`);
 
     it('`"hello"`', () => {
       expect(print(json`"hello"`)).toEqual(dedent`\
