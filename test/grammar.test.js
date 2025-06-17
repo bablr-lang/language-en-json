@@ -20,7 +20,7 @@ const print = (tree) => {
 
 describe('@bablr/language-en-json', () => {
   describe('Expression', () => {
-    const json = buildJSONTag(spam`<$__Expression />`);
+    const json = buildJSONTag(spam`<$_Expression />`);
 
     it('`"hello"`', () => {
       expect(print(json`"hello"`)).toEqual(dedent`\
