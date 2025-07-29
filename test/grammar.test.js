@@ -24,7 +24,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`"hello"`', () => {
       expect(print(json`"hello"`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$String>
@@ -37,7 +36,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`""`', () => {
       expect(print(json`""`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$String>
@@ -50,7 +48,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`" "`', () => {
       expect(print(json`" "`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$String>
@@ -63,7 +60,6 @@ describe('@bablr/language-en-json', () => {
 
     it('` " " `', () => {
       expect(print(json` " " `)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           #: :Space: <*Space ' ' />
           .:
@@ -77,10 +73,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`"\\n"`', () => {
-      expect(print(json`"\n"`)).toEqual(dedent(
-        String.raw,
-      )`<!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
-        <$_>
+      expect(print(json`"\n"`)).toEqual(dedent(String.raw)`<$_>
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
@@ -98,10 +91,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`"\\""`', () => {
-      expect(print(json`"\""`)).toEqual(dedent(
-        String.raw,
-      )`<!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
-        <$_>
+      expect(print(json`"\""`)).toEqual(dedent(String.raw)`<$_>
           .:
           <$String>
             openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
@@ -120,7 +110,6 @@ describe('@bablr/language-en-json', () => {
 
     it(`\`${raw`"\""`}\``, () => {
       expect(print(json`"\""`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$String>
@@ -140,7 +129,6 @@ describe('@bablr/language-en-json', () => {
 
     it(`\`${raw`"\u1234"`}\``, () => {
       expect(print(json`"\u123f"`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$String>
@@ -166,7 +154,6 @@ describe('@bablr/language-en-json', () => {
 
     it(`\`${raw`"\u{1}"`}\``, () => {
       expect(print(json`"\u{1}"`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$String>
@@ -192,7 +179,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`true`', () => {
       expect(print(json`true`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Boolean>
@@ -203,7 +189,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`1`', () => {
       expect(print(json`1`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Number { span: 'Number' }>
@@ -222,7 +207,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`null`', () => {
       expect(print(json`null`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Null>
@@ -233,7 +217,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`[]`', () => {
       expect(print(json`[]`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Array>
@@ -247,7 +230,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`[null]`', () => {
       expect(print(json`[null]`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Array>
@@ -265,7 +247,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`21`', () => {
       expect(print(json`21`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Number { span: 'Number' }>
@@ -284,7 +265,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`[true, false]`', () => {
       expect(print(json`[true, false]`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Array>
@@ -308,7 +288,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`{"foo":null}`', () => {
       expect(print(json`{"foo":null}`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Object>
@@ -336,7 +315,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`[[]]`', () => {
       expect(print(json`[[]]`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Array>
@@ -357,7 +335,6 @@ describe('@bablr/language-en-json', () => {
 
     it('`{"key":[{}]}`', () => {
       expect(print(json`{"key":[{}]}`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/core/en/json' }>
         <$_>
           .:
           <$Object>
