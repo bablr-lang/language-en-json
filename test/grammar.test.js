@@ -15,7 +15,7 @@ const buildJSONTag = (matcher) => {
 };
 
 const print = (tree) => {
-  return printPrettyCSTML(tree.node);
+  return printPrettyCSTML(tree);
 };
 
 describe('@bablr/language-en-json', () => {
