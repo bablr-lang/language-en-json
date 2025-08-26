@@ -27,9 +27,9 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$String>
-            openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$: <*StringContent 'hello' />
-            closeToken: <*Punctuator '"' { balancer: true } />
+            closeToken: <* '"' { balancer: true } />
           </>
         </>\n`);
     });
@@ -39,9 +39,9 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$String>
-            openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$: <*StringContent />
-            closeToken: <*Punctuator '"' { balancer: true } />
+            closeToken: <* '"' { balancer: true } />
           </>
         </>\n`);
     });
@@ -51,9 +51,9 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$String>
-            openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$: <*StringContent ' ' />
-            closeToken: <*Punctuator '"' { balancer: true } />
+            closeToken: <* '"' { balancer: true } />
           </>
         </>\n`);
     });
@@ -64,9 +64,9 @@ describe('@bablr/language-en-json', () => {
           #: :Space: <*Space ' ' />
           .:
           <$String>
-            openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$: <*StringContent ' ' />
-            closeToken: <*Punctuator '"' { balancer: true } />
+            closeToken: <* '"' { balancer: true } />
           </>
           #: :Space: <*Space ' ' />
         </>\n`);
@@ -76,16 +76,16 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`"\n"`)).toEqual(dedent(String.raw)`<$_>
           .:
           <$String>
-            openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: '\n' }>
-                sigilToken: <*Punctuator '\\' { openSpan: 'Escape' } />
+                sigilToken: <* '\\' { openSpan: 'Escape' } />
                 code: <*Keyword 'n' { closeSpan: 'Escape' } />
               </>
             </>
-            closeToken: <*Punctuator '"' { balancer: true } />
+            closeToken: <* '"' { balancer: true } />
           </>
         </>${'\n'}`);
     });
@@ -94,16 +94,16 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`"\""`)).toEqual(dedent(String.raw)`<$_>
           .:
           <$String>
-            openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: '"' }>
-                sigilToken: <*Punctuator '\\' { openSpan: 'Escape' } />
+                sigilToken: <* '\\' { openSpan: 'Escape' } />
                 code: <*Keyword '"' { closeSpan: 'Escape' } />
               </>
             </>
-            closeToken: <*Punctuator '"' { balancer: true } />
+            closeToken: <* '"' { balancer: true } />
           </>
         </>${'\n'}`);
     });
@@ -113,16 +113,16 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$String>
-            openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: '"' }>
-                sigilToken: <*Punctuator '${'\\\\'}' { openSpan: 'Escape' } />
+                sigilToken: <* '${'\\\\'}' { openSpan: 'Escape' } />
                 code: <*Keyword '"' { closeSpan: 'Escape' } />
               </>
             </>
-            closeToken: <*Punctuator '"' { balancer: true } />
+            closeToken: <* '"' { balancer: true } />
           </>
         </>\n`);
     });
@@ -132,12 +132,12 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$String>
-            openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: 'ሿ' }>
-                sigilToken: <*Punctuator '${'\\\\'}' { openSpan: 'Escape' } />
+                sigilToken: <* '${'\\\\'}' { openSpan: 'Escape' } />
                 code:
                 <EscapeCode { closeSpan: 'Escape' }>
                   typeToken: <*Keyword 'u' />
@@ -147,7 +147,7 @@ describe('@bablr/language-en-json', () => {
                 </>
               </>
             </>
-            closeToken: <*Punctuator '"' { balancer: true } />
+            closeToken: <* '"' { balancer: true } />
           </>
         </>\n`);
     });
@@ -157,22 +157,22 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$String>
-            openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$:
             <*StringContent>
               @:
               <EscapeSequence { cooked: '${'\\'}u0001' }>
-                sigilToken: <*Punctuator '${'\\\\'}' { openSpan: 'Escape' } />
+                sigilToken: <* '${'\\\\'}' { openSpan: 'Escape' } />
                 code:
                 <EscapeCode { closeSpan: 'Escape' }>
                   typeToken: <*Keyword 'u' />
-                  openToken: <*Punctuator '{' { balanced: '}' } />
+                  openToken: <* '{' { balanced: '}' } />
                   value: <*UnsignedHexInteger '1' />
-                  closeToken: <*Punctuator '}' { balancer: true } />
+                  closeToken: <* '}' { balancer: true } />
                 </>
               </>
             </>
-            closeToken: <*Punctuator '"' { balancer: true } />
+            closeToken: <* '"' { balancer: true } />
           </>
         </>\n`);
     });
@@ -220,10 +220,10 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$Array>
-            openToken: <*Punctuator '[' { balanced: ']' } />
+            openToken: <* '[' { balanced: ']' } />
             #separatorTokens[]: []
             elements[]+$: []
-            closeToken: <*Punctuator ']' { balancer: true } />
+            closeToken: <* ']' { balancer: true } />
           </>
         </>\n`);
     });
@@ -233,14 +233,14 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$Array>
-            openToken: <*Punctuator '[' { balanced: ']' } />
+            openToken: <* '[' { balanced: ']' } />
             #separatorTokens[]: []
             elements[]+$: []
             elements[]+$:
             <$Null>
               sigilToken: <*Keyword 'null' />
             </>
-            closeToken: <*Punctuator ']' { balancer: true } />
+            closeToken: <* ']' { balancer: true } />
           </>
         </>\n`);
     });
@@ -268,20 +268,20 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$Array>
-            openToken: <*Punctuator '[' { balanced: ']' } />
+            openToken: <* '[' { balanced: ']' } />
             #separatorTokens[]: []
             elements[]+$: []
             elements[]+$:
             <$Boolean>
               sigilToken: <*Keyword 'true' />
             </>
-            #separatorTokens[]: <*Punctuator ',' />
+            #separatorTokens[]: <* ',' />
             #: :Space: <*Space ' ' />
             elements[]+$:
             <$Boolean>
               sigilToken: <*Keyword 'false' />
             </>
-            closeToken: <*Punctuator ']' { balancer: true } />
+            closeToken: <* ']' { balancer: true } />
           </>
         </>\n`);
     });
@@ -291,24 +291,24 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$Object>
-            openToken: <*Punctuator '{' { balanced: '}' } />
+            openToken: <* '{' { balanced: '}' } />
             #separatorTokens[]: []
             properties[]$: []
             properties[]$:
             <$Property>
               key$:
               <$String>
-                openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+                openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
                 content$: <*StringContent 'foo' />
-                closeToken: <*Punctuator '"' { balancer: true } />
+                closeToken: <* '"' { balancer: true } />
               </>
-              sigilToken: <*Punctuator ':' />
+              sigilToken: <* ':' />
               value+$:
               <$Null>
                 sigilToken: <*Keyword 'null' />
               </>
             </>
-            closeToken: <*Punctuator '}' { balancer: true } />
+            closeToken: <* '}' { balancer: true } />
           </>
         </>\n`);
     });
@@ -318,17 +318,17 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$Array>
-            openToken: <*Punctuator '[' { balanced: ']' } />
+            openToken: <* '[' { balanced: ']' } />
             #separatorTokens[]: []
             elements[]+$: []
             elements[]+$:
             <$Array>
-              openToken: <*Punctuator '[' { balanced: ']' } />
+              openToken: <* '[' { balanced: ']' } />
               #separatorTokens[]: []
               elements[]+$: []
-              closeToken: <*Punctuator ']' { balancer: true } />
+              closeToken: <* ']' { balancer: true } />
             </>
-            closeToken: <*Punctuator ']' { balancer: true } />
+            closeToken: <* ']' { balancer: true } />
           </>
         </>\n`);
     });
@@ -338,34 +338,34 @@ describe('@bablr/language-en-json', () => {
         <$_>
           .:
           <$Object>
-            openToken: <*Punctuator '{' { balanced: '}' } />
+            openToken: <* '{' { balanced: '}' } />
             #separatorTokens[]: []
             properties[]$: []
             properties[]$:
             <$Property>
               key$:
               <$String>
-                openToken: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+                openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
                 content$: <*StringContent 'key' />
-                closeToken: <*Punctuator '"' { balancer: true } />
+                closeToken: <* '"' { balancer: true } />
               </>
-              sigilToken: <*Punctuator ':' />
+              sigilToken: <* ':' />
               value+$:
               <$Array>
-                openToken: <*Punctuator '[' { balanced: ']' } />
+                openToken: <* '[' { balanced: ']' } />
                 #separatorTokens[]: []
                 elements[]+$: []
                 elements[]+$:
                 <$Object>
-                  openToken: <*Punctuator '{' { balanced: '}' } />
+                  openToken: <* '{' { balanced: '}' } />
                   #separatorTokens[]: []
                   properties[]$: []
-                  closeToken: <*Punctuator '}' { balancer: true } />
+                  closeToken: <* '}' { balancer: true } />
                 </>
-                closeToken: <*Punctuator ']' { balancer: true } />
+                closeToken: <* ']' { balancer: true } />
               </>
             </>
-            closeToken: <*Punctuator '}' { balancer: true } />
+            closeToken: <* '}' { balancer: true } />
           </>
         </>
         `);
