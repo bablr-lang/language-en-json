@@ -221,8 +221,6 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Array>
             openToken: <* '[' { balanced: ']' } />
-            #separatorTokens[]: []
-            elements[]+$: []
             closeToken: <* ']' { balancer: true } />
           </>
         </>\n`);
@@ -234,8 +232,6 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Array>
             openToken: <* '[' { balanced: ']' } />
-            #separatorTokens[]: []
-            elements[]+$: []
             elements[]+$:
             <$Null>
               sigilToken: <*Keyword 'null' />
@@ -269,8 +265,6 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Array>
             openToken: <* '[' { balanced: ']' } />
-            #separatorTokens[]: []
-            elements[]+$: []
             elements[]+$:
             <$Boolean>
               sigilToken: <*Keyword 'true' />
@@ -292,8 +286,6 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Object>
             openToken: <* '{' { balanced: '}' } />
-            #separatorTokens[]: []
-            properties[]$: []
             properties[]$:
             <$Property>
               key$:
@@ -319,13 +311,9 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Array>
             openToken: <* '[' { balanced: ']' } />
-            #separatorTokens[]: []
-            elements[]+$: []
             elements[]+$:
             <$Array>
               openToken: <* '[' { balanced: ']' } />
-              #separatorTokens[]: []
-              elements[]+$: []
               closeToken: <* ']' { balancer: true } />
             </>
             closeToken: <* ']' { balancer: true } />
@@ -339,8 +327,6 @@ describe('@bablr/language-en-json', () => {
           .:
           <$Object>
             openToken: <* '{' { balanced: '}' } />
-            #separatorTokens[]: []
-            properties[]$: []
             properties[]$:
             <$Property>
               key$:
@@ -353,13 +339,9 @@ describe('@bablr/language-en-json', () => {
               value+$:
               <$Array>
                 openToken: <* '[' { balanced: ']' } />
-                #separatorTokens[]: []
-                elements[]+$: []
                 elements[]+$:
                 <$Object>
                   openToken: <* '{' { balanced: '}' } />
-                  #separatorTokens[]: []
-                  properties[]$: []
                   closeToken: <* '}' { balancer: true } />
                 </>
                 closeToken: <* ']' { balancer: true } />
