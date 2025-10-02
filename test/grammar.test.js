@@ -53,7 +53,6 @@ describe('@bablr/language-en-json', () => {
       expect(print(json` " " `)).toEqual(dedent`\
         <$_>
           #: :Space: <*Space ' ' />
-          .:
           <$String>
             openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
             content$: <*StringContent ' ' />
