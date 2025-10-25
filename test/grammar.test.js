@@ -25,27 +25,27 @@ describe('@bablr/language-en-json', () => {
     it('`"hello"`', () => {
       expect(print(json`"hello"`)).toEqual(dedent`\
         <$String>
-          openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-          content$: <*StringContent 'hello' />
-          closeToken: <* '"' { balancer: true } />
+          openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+          content: <*StringContent 'hello' />
+          closeToken*: <* '"' { balancer: true } />
         </>\n`);
     });
 
     it('`""`', () => {
       expect(print(json`""`)).toEqual(dedent`\
         <$String>
-          openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-          content$: <*StringContent />
-          closeToken: <* '"' { balancer: true } />
+          openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+          content: <*StringContent />
+          closeToken*: <* '"' { balancer: true } />
         </>\n`);
     });
 
     it('`" "`', () => {
       expect(print(json`" "`)).toEqual(dedent`\
         <$String>
-          openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-          content$: <*StringContent ' ' />
-          closeToken: <* '"' { balancer: true } />
+          openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+          content: <*StringContent ' ' />
+          closeToken*: <* '"' { balancer: true } />
         </>\n`);
     });
 
@@ -54,9 +54,9 @@ describe('@bablr/language-en-json', () => {
         <$_>
           #: :Space: <*Space ' ' />
           <$String>
-            openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-            content$: <*StringContent ' ' />
-            closeToken: <* '"' { balancer: true } />
+            openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+            content: <*StringContent ' ' />
+            closeToken*: <* '"' { balancer: true } />
           </>
           #: :Space: <*Space ' ' />
         </>\n`);
@@ -64,236 +64,236 @@ describe('@bablr/language-en-json', () => {
 
     it('`"\\n"`', () => {
       expect(print(json`"\n"`)).toEqual(dedent(String.raw)`<$String>
-          openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-          content$:
+          openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+          content:
           <*StringContent>
             @:
             <EscapeSequence { cooked: '\n' }>
-              sigilToken: <* '\\' { openSpan: 'Escape' } />
-              code: <*Keyword 'n' { closeSpan: 'Escape' } />
+              sigilToken*: <* '\\' { openSpan: 'Escape' } />
+              code*: <*Keyword 'n' { closeSpan: 'Escape' } />
             </>
           </>
-          closeToken: <* '"' { balancer: true } />
+          closeToken*: <* '"' { balancer: true } />
         </>${'\n'}`);
     });
 
     it('`"\\""`', () => {
       expect(print(json`"\""`)).toEqual(dedent(String.raw)`<$String>
-          openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-          content$:
+          openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+          content:
           <*StringContent>
             @:
             <EscapeSequence { cooked: '"' }>
-              sigilToken: <* '\\' { openSpan: 'Escape' } />
-              code: <*Keyword '"' { closeSpan: 'Escape' } />
+              sigilToken*: <* '\\' { openSpan: 'Escape' } />
+              code*: <*Keyword '"' { closeSpan: 'Escape' } />
             </>
           </>
-          closeToken: <* '"' { balancer: true } />
+          closeToken*: <* '"' { balancer: true } />
         </>${'\n'}`);
     });
 
     it(`\`${raw`"\""`}\``, () => {
       expect(print(json`"\""`)).toEqual(dedent`\
         <$String>
-          openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-          content$:
+          openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+          content:
           <*StringContent>
             @:
             <EscapeSequence { cooked: '"' }>
-              sigilToken: <* '${'\\\\'}' { openSpan: 'Escape' } />
-              code: <*Keyword '"' { closeSpan: 'Escape' } />
+              sigilToken*: <* '${'\\\\'}' { openSpan: 'Escape' } />
+              code*: <*Keyword '"' { closeSpan: 'Escape' } />
             </>
           </>
-          closeToken: <* '"' { balancer: true } />
+          closeToken*: <* '"' { balancer: true } />
         </>\n`);
     });
 
     it(`\`${raw`"\u1234"`}\``, () => {
       expect(print(json`"\u123f"`)).toEqual(dedent`\
         <$String>
-          openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-          content$:
+          openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+          content:
           <*StringContent>
             @:
             <EscapeSequence { cooked: 'ሿ' }>
-              sigilToken: <* '${'\\\\'}' { openSpan: 'Escape' } />
-              code:
+              sigilToken*: <* '${'\\\\'}' { openSpan: 'Escape' } />
+              code*:
               <EscapeCode { closeSpan: 'Escape' }>
-                typeToken: <*Keyword 'u' />
-                openToken: null
+                typeToken*: <*Keyword 'u' />
+                openToken*: null
                 value: <*UnsignedHexInteger '123f' />
-                closeToken: null
+                closeToken*: null
               </>
             </>
           </>
-          closeToken: <* '"' { balancer: true } />
+          closeToken*: <* '"' { balancer: true } />
         </>\n`);
     });
 
     it(`\`${raw`"\u{1}"`}\``, () => {
       expect(print(json`"\u{1}"`)).toEqual(dedent`\
         <$String>
-          openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-          content$:
+          openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+          content:
           <*StringContent>
             @:
             <EscapeSequence { cooked: '${'\\'}u0001' }>
-              sigilToken: <* '${'\\\\'}' { openSpan: 'Escape' } />
-              code:
+              sigilToken*: <* '${'\\\\'}' { openSpan: 'Escape' } />
+              code*:
               <EscapeCode { closeSpan: 'Escape' }>
-                typeToken: <*Keyword 'u' />
-                openToken: <* '{' { balanced: '}' } />
+                typeToken*: <*Keyword 'u' />
+                openToken*: <* '{' { balanced: '}' } />
                 value: <*UnsignedHexInteger '1' />
-                closeToken: <* '}' { balancer: true } />
+                closeToken*: <* '}' { balancer: true } />
               </>
             </>
           </>
-          closeToken: <* '"' { balancer: true } />
+          closeToken*: <* '"' { balancer: true } />
         </>\n`);
     });
 
     it('`true`', () => {
       expect(print(json`true`)).toEqual(dedent`\
         <$Boolean>
-          sigilToken: <*Keyword 'true' />
+          sigilToken*: <*Keyword 'true' />
         </>\n`);
     });
 
     it('`1`', () => {
       expect(print(json`1`)).toEqual(dedent`\
         <$Number { span: 'Number' }>
-          wholePart$:
+          wholePart:
           <$Integer>
-            signToken: null
-            value$: <*UnsignedInteger '1' />
+            signToken*: null
+            value: <*UnsignedInteger '1' />
           </>
-          fractionalSeparatorToken: null
-          fractionalPart$: null
-          exponentSeparatorToken: null
-          exponentPart$: null
+          fractionalSeparatorToken*: null
+          fractionalPart: null
+          exponentSeparatorToken*: null
+          exponentPart: null
         </>\n`);
     });
 
     it('`null`', () => {
       expect(print(json`null`)).toEqual(dedent`\
         <$Null>
-          sigilToken: <*Keyword 'null' />
+          sigilToken*: <*Keyword 'null' />
         </>\n`);
     });
 
     it('`[]`', () => {
       expect(print(json`[]`)).toEqual(dedent`\
         <$Array>
-          openToken: <* '[' { balanced: ']' } />
-          closeToken: <* ']' { balancer: true } />
+          openToken*: <* '[' { balanced: ']' } />
+          closeToken*: <* ']' { balancer: true } />
         </>\n`);
     });
 
     it('`[null]`', () => {
       expect(print(json`[null]`)).toEqual(dedent`\
         <$Array>
-          openToken: <* '[' { balanced: ']' } />
-          elements[]+$:
+          openToken*: <* '[' { balanced: ']' } />
+          elements[]+:
           <$Null>
-            sigilToken: <*Keyword 'null' />
+            sigilToken*: <*Keyword 'null' />
           </>
-          closeToken: <* ']' { balancer: true } />
+          closeToken*: <* ']' { balancer: true } />
         </>\n`);
     });
 
     it('`21`', () => {
       expect(print(json`21`)).toEqual(dedent`\
         <$Number { span: 'Number' }>
-          wholePart$:
+          wholePart:
           <$Integer>
-            signToken: null
-            value$: <*UnsignedInteger '21' />
+            signToken*: null
+            value: <*UnsignedInteger '21' />
           </>
-          fractionalSeparatorToken: null
-          fractionalPart$: null
-          exponentSeparatorToken: null
-          exponentPart$: null
+          fractionalSeparatorToken*: null
+          fractionalPart: null
+          exponentSeparatorToken*: null
+          exponentPart: null
         </>\n`);
     });
 
     it('`[true, false]`', () => {
       expect(print(json`[true, false]`)).toEqual(dedent`\
         <$Array>
-          openToken: <* '[' { balanced: ']' } />
-          elements[]+$:
+          openToken*: <* '[' { balanced: ']' } />
+          elements[]+:
           <$Boolean>
-            sigilToken: <*Keyword 'true' />
+            sigilToken*: <*Keyword 'true' />
           </>
-          separatorTokens[]: <* ',' />
+          #separatorTokens[]: <* ',' />
           #: :Space: <*Space ' ' />
-          elements[]+$:
+          elements[]+:
           <$Boolean>
-            sigilToken: <*Keyword 'false' />
+            sigilToken*: <*Keyword 'false' />
           </>
-          closeToken: <* ']' { balancer: true } />
+          closeToken*: <* ']' { balancer: true } />
         </>\n`);
     });
 
     it('`{"foo":null}`', () => {
       expect(print(json`{"foo":null}`)).toEqual(dedent`\
         <$Object>
-          openToken: <* '{' { balanced: '}' } />
-          properties[]$:
+          openToken*: <* '{' { balanced: '}' } />
+          properties[]:
           <$Property>
-            key$:
+            key:
             <$String>
-              openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-              content$: <*StringContent 'foo' />
-              closeToken: <* '"' { balancer: true } />
+              openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+              content: <*StringContent 'foo' />
+              closeToken*: <* '"' { balancer: true } />
             </>
-            sigilToken: <* ':' />
-            value+$:
+            sigilToken*: <* ':' />
+            value+:
             <$Null>
-              sigilToken: <*Keyword 'null' />
+              sigilToken*: <*Keyword 'null' />
             </>
           </>
-          closeToken: <* '}' { balancer: true } />
+          closeToken*: <* '}' { balancer: true } />
         </>\n`);
     });
 
     it('`[[]]`', () => {
       expect(print(json`[[]]`)).toEqual(dedent`\
         <$Array>
-          openToken: <* '[' { balanced: ']' } />
-          elements[]+$:
+          openToken*: <* '[' { balanced: ']' } />
+          elements[]+:
           <$Array>
-            openToken: <* '[' { balanced: ']' } />
-            closeToken: <* ']' { balancer: true } />
+            openToken*: <* '[' { balanced: ']' } />
+            closeToken*: <* ']' { balancer: true } />
           </>
-          closeToken: <* ']' { balancer: true } />
+          closeToken*: <* ']' { balancer: true } />
         </>\n`);
     });
 
     it('`{"key":[{}]}`', () => {
       expect(print(json`{"key":[{}]}`)).toEqual(dedent`\
         <$Object>
-          openToken: <* '{' { balanced: '}' } />
-          properties[]$:
+          openToken*: <* '{' { balanced: '}' } />
+          properties[]:
           <$Property>
-            key$:
+            key:
             <$String>
-              openToken: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-              content$: <*StringContent 'key' />
-              closeToken: <* '"' { balancer: true } />
+              openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+              content: <*StringContent 'key' />
+              closeToken*: <* '"' { balancer: true } />
             </>
-            sigilToken: <* ':' />
-            value+$:
+            sigilToken*: <* ':' />
+            value+:
             <$Array>
-              openToken: <* '[' { balanced: ']' } />
-              elements[]+$:
+              openToken*: <* '[' { balanced: ']' } />
+              elements[]+:
               <$Object>
-                openToken: <* '{' { balanced: '}' } />
-                closeToken: <* '}' { balancer: true } />
+                openToken*: <* '{' { balanced: '}' } />
+                closeToken*: <* '}' { balancer: true } />
               </>
-              closeToken: <* ']' { balancer: true } />
+              closeToken*: <* ']' { balancer: true } />
             </>
           </>
-          closeToken: <* '}' { balancer: true } />
+          closeToken*: <* '}' { balancer: true } />
         </>\n`);
     });
   });
