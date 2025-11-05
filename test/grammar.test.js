@@ -1,7 +1,7 @@
 import { buildTag } from 'bablr';
 import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
-import * as language from '@bablr/language-en-json';
+import language from '@bablr/language-en-json';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
 
