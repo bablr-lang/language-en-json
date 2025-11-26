@@ -224,7 +224,7 @@ describe('@bablr/language-en-json', () => {
           <$Boolean>
             sigilToken*: <*Keyword 'true' />
           </>
-          #separatorTokens[]: <* ',' />
+          #separatorTokens: <* ',' />
           #: :Space: <*Space ' ' />
           elements[]+:
           <$Boolean>
