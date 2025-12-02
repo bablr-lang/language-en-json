@@ -26,7 +26,7 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`"hello"`)).toEqual(dedent`\
         <$String>
           openToken*: <* '"' />
-          content: <*StringContent 'hello' />
+          content$: <*StringContent 'hello' />
           closeToken*: <* '"' />
         </>\n`);
     });
@@ -35,7 +35,7 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`""`)).toEqual(dedent`\
         <$String>
           openToken*: <* '"' />
-          content: <*StringContent />
+          content$: <*StringContent />
           closeToken*: <* '"' />
         </>\n`);
     });
@@ -44,7 +44,7 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`" "`)).toEqual(dedent`\
         <$String>
           openToken*: <* '"' />
-          content: <*StringContent ' ' />
+          content$: <*StringContent ' ' />
           closeToken*: <* '"' />
         </>\n`);
     });
@@ -56,7 +56,7 @@ describe('@bablr/language-en-json', () => {
           _:
           <$String>
             openToken*: <* '"' />
-            content: <*StringContent ' ' />
+            content$: <*StringContent ' ' />
             closeToken*: <* '"' />
           </>
           #: :Space: <*Space ' ' />
@@ -66,7 +66,7 @@ describe('@bablr/language-en-json', () => {
     it('`"\\n"`', () => {
       expect(print(json`"\n"`)).toEqual(dedent(String.raw)`<$String>
           openToken*: <* '"' />
-          content:
+          content$:
           <*StringContent>
             @:
             <EscapeSequence { cooked: '\n' }>
@@ -81,7 +81,7 @@ describe('@bablr/language-en-json', () => {
     it('`"\\""`', () => {
       expect(print(json`"\""`)).toEqual(dedent(String.raw)`<$String>
           openToken*: <* '"' />
-          content:
+          content$:
           <*StringContent>
             @:
             <EscapeSequence { cooked: '"' }>
@@ -97,7 +97,7 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`"\""`)).toEqual(dedent`\
         <$String>
           openToken*: <* '"' />
-          content:
+          content$:
           <*StringContent>
             @:
             <EscapeSequence { cooked: '"' }>
@@ -113,7 +113,7 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`"\u123f"`)).toEqual(dedent`\
         <$String>
           openToken*: <* '"' />
-          content:
+          content$:
           <*StringContent>
             @:
             <EscapeSequence { cooked: 'ሿ' }>
@@ -121,9 +121,7 @@ describe('@bablr/language-en-json', () => {
               code*:
               <EscapeCode>
                 typeToken*: <*Keyword 'u' />
-                openToken*: null
                 value: <*UnsignedHexInteger '123f' />
-                closeToken*: null
               </>
             </>
           </>
@@ -135,7 +133,7 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`"\u{1}"`)).toEqual(dedent`\
         <$String>
           openToken*: <* '"' />
-          content:
+          content$:
           <*StringContent>
             @:
             <EscapeSequence { cooked: '${'\\'}u0001' }>
@@ -163,15 +161,12 @@ describe('@bablr/language-en-json', () => {
     it('`1`', () => {
       expect(print(json`1`)).toEqual(dedent`\
         <$Number>
-          wholePart:
+          wholePart$:
           <$Integer>
-            signToken*: null
-            value: <*UnsignedInteger '1' />
+            value$: <*UnsignedInteger '1' />
           </>
-          fractionalSeparatorToken*: null
-          fractionalPart: null
-          exponentSeparatorToken*: null
-          exponentPart: null
+          fractionalPart$: null
+          exponentPart$: null
         </>\n`);
     });
 
@@ -194,7 +189,7 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`[null]`)).toEqual(dedent`\
         <$Array>
           openToken*: <* '[' />
-          elements[]:
+          elements[]$:
           <$Null>
             sigilToken*: <*Keyword 'null' />
           </>
@@ -205,15 +200,12 @@ describe('@bablr/language-en-json', () => {
     it('`21`', () => {
       expect(print(json`21`)).toEqual(dedent`\
         <$Number>
-          wholePart:
+          wholePart$:
           <$Integer>
-            signToken*: null
-            value: <*UnsignedInteger '21' />
+            value$: <*UnsignedInteger '21' />
           </>
-          fractionalSeparatorToken*: null
-          fractionalPart: null
-          exponentSeparatorToken*: null
-          exponentPart: null
+          fractionalPart$: null
+          exponentPart$: null
         </>\n`);
     });
 
@@ -221,13 +213,13 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`[true, false]`)).toEqual(dedent`\
         <$Array>
           openToken*: <* '[' />
-          elements[]:
+          elements[]$:
           <$Boolean>
             sigilToken*: <*Keyword 'true' />
           </>
           #separatorTokens: <* ',' />
           #: :Space: <*Space ' ' />
-          elements[]:
+          elements[]$:
           <$Boolean>
             sigilToken*: <*Keyword 'false' />
           </>
@@ -239,16 +231,16 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`{"foo":null}`)).toEqual(dedent`\
         <$Object>
           openToken*: <* '{' />
-          properties[]:
+          properties[]$:
           <$Property>
-            key:
+            key$:
             <$String>
               openToken*: <* '"' />
-              content: <*StringContent 'foo' />
+              content$: <*StringContent 'foo' />
               closeToken*: <* '"' />
             </>
             sigilToken*: <* ':' />
-            value+:
+            value+$:
             <$Null>
               sigilToken*: <*Keyword 'null' />
             </>
@@ -261,7 +253,7 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`[[]]`)).toEqual(dedent`\
         <$Array>
           openToken*: <* '[' />
-          elements[]:
+          elements[]$:
           <$Array>
             openToken*: <* '[' />
             closeToken*: <* ']' />
@@ -274,19 +266,19 @@ describe('@bablr/language-en-json', () => {
       expect(print(json`{"key":[{}]}`)).toEqual(dedent`\
         <$Object>
           openToken*: <* '{' />
-          properties[]:
+          properties[]$:
           <$Property>
-            key:
+            key$:
             <$String>
               openToken*: <* '"' />
-              content: <*StringContent 'key' />
+              content$: <*StringContent 'key' />
               closeToken*: <* '"' />
             </>
             sigilToken*: <* ':' />
-            value+:
+            value+$:
             <$Array>
               openToken*: <* '[' />
-              elements[]:
+              elements[]$:
               <$Object>
                 openToken*: <* '{' />
                 closeToken*: <* '}' />
