@@ -240,7 +240,7 @@ describe('@bablr/language-en-json', () => {
               closeToken*: <* '"' />
             </>
             sigilToken*: <* ':' />
-            value+$:
+            value$:
             <$Null>
               sigilToken*: <*Keyword 'null' />
             </>
@@ -275,7 +275,7 @@ describe('@bablr/language-en-json', () => {
               closeToken*: <* '"' />
             </>
             sigilToken*: <* ':' />
-            value+$:
+            value$:
             <$Array>
               openToken*: <* '[' />
               elements[]$:
