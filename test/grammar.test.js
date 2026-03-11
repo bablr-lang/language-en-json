@@ -1,3 +1,4 @@
+import '@bablr/deep-freeze/register';
 import { buildTag } from 'bablr';
 import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
@@ -7,8 +8,6 @@ import { printPrettyCSTML } from '@bablr/helpers/tree';
 
 let enhancers = {};
 let { raw } = String;
-
-// enhancers = debugEnhancers;
 
 const buildJSONTag = (matcher) => {
   return buildTag(language, matcher, undefined, { enhancers });

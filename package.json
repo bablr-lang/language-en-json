@@ -25,7 +25,7 @@
     "@bablr/language-en-blank-space": "0.10.13"
   },
   "devDependencies": {
-    "@bablr/eslint-config-base": "github:bablr-lang/eslint-config-base#c97bfa4b3663f8378e9b3e42bb5a41e685406cf9",
+    "@bablr/eslint-config-base": "github:bablr-lang/eslint-config-base#23b94fb3bdfdbc3ac7ed9cb58d7979d8f07dce2b",
     "@qnighy/dedent": "0.1.1",
     "bablr": "^0.11.11",
     "enhanced-resolve": "^5.12.0",
