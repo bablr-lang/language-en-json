@@ -1,4 +1,3 @@
-import '@bablr/deep-freeze/register';
 import { buildTag } from 'bablr';
 import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
