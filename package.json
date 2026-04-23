@@ -33,7 +33,6 @@
     "eslint-import-resolver-enhanced-resolve": "^1.0.5",
     "eslint-plugin-import": "^2.27.5",
     "expect": "29.7.0",
-    "iter-tools-es": "^7.5.3",
     "mocha": "^10.4.0",
     "prettier": "^2.0.5"
   },
