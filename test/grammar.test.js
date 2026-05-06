@@ -1,9 +1,9 @@
 import { buildTag } from 'bablr';
-import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
 import language from '@bablr/language-en-json';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
+import { m } from '@bablr/helpers/grammar';
 
 let enhancers = {};
 let { raw } = String;
@@ -18,7 +18,7 @@ const print = (tree) => {
 
 describe('@bablr/language-en-json', () => {
   describe('Expression', () => {
-    const json = buildJSONTag(spam`<$_Expression />`);
+    const json = buildJSONTag(m`<$_Expression />`);
 
     it('`"hello"`', () => {
       expect(print(json`"hello"`)).toEqual(dedent`\

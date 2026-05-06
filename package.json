@@ -20,7 +20,6 @@
   "dependencies": {
     "@bablr/agast-helpers": "0.10.10",
     "@bablr/agast-vm-helpers": "0.10.5",
-    "@bablr/boot": "0.11.4",
     "@bablr/helpers": "0.25.5",
     "@bablr/language-en-blank-space": "0.10.13"
   },
