@@ -29,7 +29,8 @@ describe('@bablr/language-en-json', () => {
             content$: <*StringContent 'hello' />
             closeToken*: <* '"' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`""`', () => {
@@ -41,7 +42,8 @@ describe('@bablr/language-en-json', () => {
             content$: <*StringContent />
             closeToken*: <* '"' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`" "`', () => {
@@ -53,7 +55,8 @@ describe('@bablr/language-en-json', () => {
             content$: <*StringContent ' ' />
             closeToken*: <* '"' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('` " " `', () => {
@@ -67,7 +70,8 @@ describe('@bablr/language-en-json', () => {
             closeToken*: <* '"' />
           </>
           #: :Space: <*Space ' ' />
-        </>\n`);
+        </>
+      `);
     });
 
     it('`"\\n"`', () => {
@@ -124,7 +128,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* '"' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it(`\`${raw`"\u1234"`}\``, () => {
@@ -147,7 +152,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* '"' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it(`\`${raw`"\u{1}"`}\``, () => {
@@ -172,7 +178,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* '"' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`true`', () => {
@@ -182,7 +189,8 @@ describe('@bablr/language-en-json', () => {
           <$Boolean>
             sigilToken*: <*Keyword 'true' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`1`', () => {
@@ -197,7 +205,8 @@ describe('@bablr/language-en-json', () => {
             fractionalPart$: null
             exponentPart$: null
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`null`', () => {
@@ -207,7 +216,8 @@ describe('@bablr/language-en-json', () => {
           <$Null>
             sigilToken*: <*Keyword 'null' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`[]`', () => {
@@ -218,7 +228,8 @@ describe('@bablr/language-en-json', () => {
             openToken*: <* '[' />
             closeToken*: <* ']' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`[null]`', () => {
@@ -233,7 +244,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* ']' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`21`', () => {
@@ -248,7 +260,8 @@ describe('@bablr/language-en-json', () => {
             fractionalPart$: null
             exponentPart$: null
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`[true, false]`', () => {
@@ -269,7 +282,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* ']' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`{"foo":null}`', () => {
@@ -294,7 +308,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* '}' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`[[]]`', () => {
@@ -310,7 +325,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* ']' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('`{"key":[{}]}`', () => {
@@ -341,7 +357,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* '}' />
           </>
-        </>\n`);
+        </>
+      `);
     });
   });
 });
