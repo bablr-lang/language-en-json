@@ -90,7 +90,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* '"' />
           </>
-        </>${'\n'}`);
+        </>
+      `);
     });
 
     it('`"\\""`', () => {
@@ -109,7 +110,8 @@ describe('@bablr/language-en-json', () => {
             </>
             closeToken*: <* '"' />
           </>
-        </>${'\n'}`);
+        </>
+      `);
     });
 
     it(`\`${raw`"\""`}\``, () => {
