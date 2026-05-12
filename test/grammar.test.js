@@ -21,7 +21,7 @@ describe('@bablr/language-en-json', () => {
     const json = buildJSONTag(m`<$_Expression />`);
 
     it('`"hello"`', () => {
-      expect(print(json`"hello"`)).toEqual(dedent`\
+      expect(print(json`"hello"`)).toEqual(dedent`
         <$_>
           _:
           <$String>
@@ -33,7 +33,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`""`', () => {
-      expect(print(json`""`)).toEqual(dedent`\
+      expect(print(json`""`)).toEqual(dedent`
         <$_>
           _:
           <$String>
@@ -45,7 +45,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`" "`', () => {
-      expect(print(json`" "`)).toEqual(dedent`\
+      expect(print(json`" "`)).toEqual(dedent`
         <$_>
           _:
           <$String>
@@ -57,7 +57,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('` " " `', () => {
-      expect(print(json` " " `)).toEqual(dedent`\
+      expect(print(json` " " `)).toEqual(dedent`
         <$_>
           #: :Space: <*Space ' ' />
           _:
@@ -71,7 +71,8 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`"\\n"`', () => {
-      expect(print(json`"\n"`)).toEqual(dedent(String.raw)`<$_>
+      expect(print(json`"\n"`)).toEqual(dedent(String.raw)`
+        <$_>
           _:
           <$String>
             openToken*: <* '"' />
@@ -89,7 +90,8 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`"\\""`', () => {
-      expect(print(json`"\""`)).toEqual(dedent(String.raw)`<$_>
+      expect(print(json`"\""`)).toEqual(dedent(String.raw)`
+        <$_>
           _:
           <$String>
             openToken*: <* '"' />
@@ -107,7 +109,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it(`\`${raw`"\""`}\``, () => {
-      expect(print(json`"\""`)).toEqual(dedent`\
+      expect(print(json`"\""`)).toEqual(dedent`
         <$_>
           _:
           <$String>
@@ -126,7 +128,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it(`\`${raw`"\u1234"`}\``, () => {
-      expect(print(json`"\u123f"`)).toEqual(dedent`\
+      expect(print(json`"\u123f"`)).toEqual(dedent`
         <$_>
           _:
           <$String>
@@ -149,7 +151,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it(`\`${raw`"\u{1}"`}\``, () => {
-      expect(print(json`"\u{1}"`)).toEqual(dedent`\
+      expect(print(json`"\u{1}"`)).toEqual(dedent`
         <$_>
           _:
           <$String>
@@ -174,7 +176,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`true`', () => {
-      expect(print(json`true`)).toEqual(dedent`\
+      expect(print(json`true`)).toEqual(dedent`
         <$_>
           _:
           <$Boolean>
@@ -184,7 +186,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`1`', () => {
-      expect(print(json`1`)).toEqual(dedent`\
+      expect(print(json`1`)).toEqual(dedent`
         <$_>
           _:
           <$Number>
@@ -199,7 +201,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`null`', () => {
-      expect(print(json`null`)).toEqual(dedent`\
+      expect(print(json`null`)).toEqual(dedent`
         <$_>
           _:
           <$Null>
@@ -209,7 +211,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`[]`', () => {
-      expect(print(json`[]`)).toEqual(dedent`\
+      expect(print(json`[]`)).toEqual(dedent`
         <$_>
           _:
           <$Array>
@@ -220,7 +222,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`[null]`', () => {
-      expect(print(json`[null]`)).toEqual(dedent`\
+      expect(print(json`[null]`)).toEqual(dedent`
         <$_>
           _:
           <$Array>
@@ -235,7 +237,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`21`', () => {
-      expect(print(json`21`)).toEqual(dedent`\
+      expect(print(json`21`)).toEqual(dedent`
         <$_>
           _:
           <$Number>
@@ -250,7 +252,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`[true, false]`', () => {
-      expect(print(json`[true, false]`)).toEqual(dedent`\
+      expect(print(json`[true, false]`)).toEqual(dedent`
         <$_>
           _:
           <$Array>
@@ -271,7 +273,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`{"foo":null}`', () => {
-      expect(print(json`{"foo":null}`)).toEqual(dedent`\
+      expect(print(json`{"foo":null}`)).toEqual(dedent`
         <$_>
           _:
           <$Object>
@@ -296,7 +298,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`[[]]`', () => {
-      expect(print(json`[[]]`)).toEqual(dedent`\
+      expect(print(json`[[]]`)).toEqual(dedent`
         <$_>
           _:
           <$Array>
@@ -312,7 +314,7 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`{"key":[{}]}`', () => {
-      expect(print(json`{"key":[{}]}`)).toEqual(dedent`\
+      expect(print(json`{"key":[{}]}`)).toEqual(dedent`
         <$_>
           _:
           <$Object>
