@@ -200,11 +200,12 @@ describe('@bablr/language-en-json', () => {
         <$_>
           _:
           <$Number>
-            wholePart$:
-            <$Integer>
-              value$: <*UnsignedInteger '1' />
-            </>
-            fractionalPart$: null
+            sign*: null
+            wholePart$: <*UnsignedInteger '1' />
+            decimalSeparatorToken*: null
+            decimalPart$: null
+            exponentSeparatorToken*: null
+            exponentSign*: null
             exponentPart$: null
           </>
         </>
@@ -255,11 +256,12 @@ describe('@bablr/language-en-json', () => {
         <$_>
           _:
           <$Number>
-            wholePart$:
-            <$Integer>
-              value$: <*UnsignedInteger '21' />
-            </>
-            fractionalPart$: null
+            sign*: null
+            wholePart$: <*UnsignedInteger '21' />
+            decimalSeparatorToken*: null
+            decimalPart$: null
+            exponentSeparatorToken*: null
+            exponentSign*: null
             exponentPart$: null
           </>
         </>
