@@ -203,10 +203,7 @@ describe('@bablr/language-en-json', () => {
             sign*: null
             wholePart$: <*UnsignedInteger '1' />
             decimalSeparatorToken*: null
-            decimalPart$: null
             exponentSeparatorToken*: null
-            exponentSign*: null
-            exponentPart$: null
           </>
         </>
       `);
@@ -251,18 +248,16 @@ describe('@bablr/language-en-json', () => {
       `);
     });
 
-    it('`21`', () => {
-      expect(print(json`21`)).toEqual(dedent`
+    it('`2e1`', () => {
+      expect(print(json`2e1`)).toEqual(dedent`
         <$_>
           _:
           <$Number>
             sign*: null
-            wholePart$: <*UnsignedInteger '21' />
+            wholePart$: <*UnsignedInteger '2' />
             decimalSeparatorToken*: null
-            decimalPart$: null
-            exponentSeparatorToken*: null
-            exponentSign*: null
-            exponentPart$: null
+            exponentSeparatorToken*: <* 'e' />
+            exponentPart$: <*UnsignedInteger '1' />
           </>
         </>
       `);
