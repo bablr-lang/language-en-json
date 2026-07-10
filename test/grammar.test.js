@@ -75,38 +75,14 @@ describe('@bablr/language-en-json', () => {
     });
 
     it('`"\\n"`', () => {
-      expect(print(json`"\n"`)).toEqual(dedent(String.raw)`
+      expect(print(json`"\n"`)).toEqual(dedent`
         <$_>
           _:
           <$String>
             openToken*: <* '"' />
             content$:
             <*StringContent>
-              @:
-              <EscapeSequence { cooked: '\n' }>
-                sigilToken*: <* '\\' />
-                code*: <*Keyword 'n' />
-              </>
-            </>
-            closeToken*: <* '"' />
-          </>
-        </>
-      `);
-    });
-
-    it('`"\\""`', () => {
-      expect(print(json`"\""`)).toEqual(dedent(String.raw)`
-        <$_>
-          _:
-          <$String>
-            openToken*: <* '"' />
-            content$:
-            <*StringContent>
-              @:
-              <EscapeSequence { cooked: '"' }>
-                sigilToken*: <* '\\' />
-                code*: <*Keyword '"' />
-              </>
+              @'\\n' @@'\\\\n'
             </>
             closeToken*: <* '"' />
           </>
@@ -122,11 +98,7 @@ describe('@bablr/language-en-json', () => {
             openToken*: <* '"' />
             content$:
             <*StringContent>
-              @:
-              <EscapeSequence { cooked: '"' }>
-                sigilToken*: <* '${'\\\\'}' />
-                code*: <*Keyword '"' />
-              </>
+              @'"' @@'\\\\"'
             </>
             closeToken*: <* '"' />
           </>
@@ -135,22 +107,14 @@ describe('@bablr/language-en-json', () => {
     });
 
     it(`\`${raw`"\u1234"`}\``, () => {
-      expect(print(json`"\u123f"`)).toEqual(dedent`
+      expect(print(json`"\u1234"`)).toEqual(dedent`
         <$_>
           _:
           <$String>
             openToken*: <* '"' />
             content$:
             <*StringContent>
-              @:
-              <EscapeSequence { cooked: 'ሿ' }>
-                sigilToken*: <* '${'\\\\'}' />
-                code*:
-                <EscapeCode>
-                  typeToken*: <*Keyword 'u' />
-                  value: <*UnsignedHexInteger '123f' />
-                </>
-              </>
+              @'ሴ' @@'\\\\u1234'
             </>
             closeToken*: <* '"' />
           </>
@@ -166,17 +130,7 @@ describe('@bablr/language-en-json', () => {
             openToken*: <* '"' />
             content$:
             <*StringContent>
-              @:
-              <EscapeSequence { cooked: '${'\\'}u0001' }>
-                sigilToken*: <* '${'\\\\'}' />
-                code*:
-                <EscapeCode>
-                  typeToken*: <*Keyword 'u' />
-                  openToken*: <* '{' />
-                  value: <*UnsignedHexInteger '1' />
-                  closeToken*: <* '}' />
-                </>
-              </>
+              @'\\u0001' @@'\\\\u{1}'
             </>
             closeToken*: <* '"' />
           </>
