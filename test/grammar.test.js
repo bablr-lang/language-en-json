@@ -80,10 +80,7 @@ describe('@bablr/language-en-json', () => {
           _:
           <$String>
             openToken*: <* '"' />
-            content$:
-            <*StringContent>
-              @'\\n' @@'\\\\n'
-            </>
+            content$: <*StringContent @'\\n' @@'\\\\n' />
             closeToken*: <* '"' />
           </>
         </>
@@ -96,10 +93,7 @@ describe('@bablr/language-en-json', () => {
           _:
           <$String>
             openToken*: <* '"' />
-            content$:
-            <*StringContent>
-              @'"' @@'\\\\"'
-            </>
+            content$: <*StringContent @'"' @@'\\\\"' />
             closeToken*: <* '"' />
           </>
         </>
@@ -112,10 +106,7 @@ describe('@bablr/language-en-json', () => {
           _:
           <$String>
             openToken*: <* '"' />
-            content$:
-            <*StringContent>
-              @'ሴ' @@'\\\\u1234'
-            </>
+            content$: <*StringContent @'ሴ' @@'\\\\u1234' />
             closeToken*: <* '"' />
           </>
         </>
@@ -128,10 +119,7 @@ describe('@bablr/language-en-json', () => {
           _:
           <$String>
             openToken*: <* '"' />
-            content$:
-            <*StringContent>
-              @'\\u0001' @@'\\\\u{1}'
-            </>
+            content$: <*StringContent @'\\u0001' @@'\\\\u{1}' />
             closeToken*: <* '"' />
           </>
         </>
