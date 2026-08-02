@@ -18,13 +18,13 @@ const print = (tree) => {
 
 describe('@bablr/language-en-json', () => {
   describe('Expression', () => {
-    const json = buildJSONTag(m`<$_Expression />`);
+    const json = buildJSONTag(m`<_Expression />`);
 
     it('`"hello"`', () => {
       expect(print(json`"hello"`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$String>
+          <String>
             openToken*: <* '"' />
             content$: <*StringContent 'hello' />
             closeToken*: <* '"' />
@@ -35,9 +35,9 @@ describe('@bablr/language-en-json', () => {
 
     it('`""`', () => {
       expect(print(json`""`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$String>
+          <String>
             openToken*: <* '"' />
             content$: <*StringContent />
             closeToken*: <* '"' />
@@ -48,9 +48,9 @@ describe('@bablr/language-en-json', () => {
 
     it('`" "`', () => {
       expect(print(json`" "`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$String>
+          <String>
             openToken*: <* '"' />
             content$: <*StringContent ' ' />
             closeToken*: <* '"' />
@@ -61,10 +61,10 @@ describe('@bablr/language-en-json', () => {
 
     it('` " " `', () => {
       expect(print(json` " " `)).toEqual(dedent`
-        <$_>
+        <_>
           #: :Space: <*Space ' ' />
           _:
-          <$String>
+          <String>
             openToken*: <* '"' />
             content$: <*StringContent ' ' />
             closeToken*: <* '"' />
@@ -76,9 +76,9 @@ describe('@bablr/language-en-json', () => {
 
     it('`"\\n"`', () => {
       expect(print(json`"\n"`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$String>
+          <String>
             openToken*: <* '"' />
             content$: <*StringContent @'\\n' @@'\\\\n' />
             closeToken*: <* '"' />
@@ -89,9 +89,9 @@ describe('@bablr/language-en-json', () => {
 
     it(`\`${raw`"\""`}\``, () => {
       expect(print(json`"\""`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$String>
+          <String>
             openToken*: <* '"' />
             content$: <*StringContent @'"' @@'\\\\"' />
             closeToken*: <* '"' />
@@ -102,9 +102,9 @@ describe('@bablr/language-en-json', () => {
 
     it(`\`${raw`"\u1234"`}\``, () => {
       expect(print(json`"\u1234"`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$String>
+          <String>
             openToken*: <* '"' />
             content$: <*StringContent @'ሴ' @@'\\\\u1234' />
             closeToken*: <* '"' />
@@ -115,9 +115,9 @@ describe('@bablr/language-en-json', () => {
 
     it(`\`${raw`"\u{1}"`}\``, () => {
       expect(print(json`"\u{1}"`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$String>
+          <String>
             openToken*: <* '"' />
             content$: <*StringContent @'\\u0001' @@'\\\\u{1}' />
             closeToken*: <* '"' />
@@ -128,9 +128,9 @@ describe('@bablr/language-en-json', () => {
 
     it('`true`', () => {
       expect(print(json`true`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Boolean>
+          <Boolean>
             sigilToken*: <*Keyword 'true' />
           </>
         </>
@@ -139,9 +139,9 @@ describe('@bablr/language-en-json', () => {
 
     it('`1`', () => {
       expect(print(json`1`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Number>
+          <Number>
             sign*: null 
             wholePart$: <*UnsignedInteger '1' />
             decimalSeparatorToken*: null 
@@ -153,9 +153,9 @@ describe('@bablr/language-en-json', () => {
 
     it('`null`', () => {
       expect(print(json`null`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Null>
+          <Null>
             sigilToken*: <*Keyword 'null' />
           </>
         </>
@@ -164,9 +164,9 @@ describe('@bablr/language-en-json', () => {
 
     it('`[]`', () => {
       expect(print(json`[]`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Array>
+          <Array>
             openToken*: <* '[' />
             closeToken*: <* ']' />
           </>
@@ -176,12 +176,12 @@ describe('@bablr/language-en-json', () => {
 
     it('`[null]`', () => {
       expect(print(json`[null]`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Array>
+          <Array>
             openToken*: <* '[' />
             elements[]$:
-            <$Null>
+            <Null>
               sigilToken*: <*Keyword 'null' />
             </>
             closeToken*: <* ']' />
@@ -192,9 +192,9 @@ describe('@bablr/language-en-json', () => {
 
     it('`2e1`', () => {
       expect(print(json`2e1`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Number>
+          <Number>
             sign*: null 
             wholePart$: <*UnsignedInteger '2' />
             decimalSeparatorToken*: null 
@@ -207,18 +207,18 @@ describe('@bablr/language-en-json', () => {
 
     it('`[true, false]`', () => {
       expect(print(json`[true, false]`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Array>
+          <Array>
             openToken*: <* '[' />
             elements[]$:
-            <$Boolean>
+            <Boolean>
               sigilToken*: <*Keyword 'true' />
             </>
             #separatorTokens: <* ',' />
             #: :Space: <*Space ' ' />
             elements[]$:
-            <$Boolean>
+            <Boolean>
               sigilToken*: <*Keyword 'false' />
             </>
             closeToken*: <* ']' />
@@ -229,21 +229,21 @@ describe('@bablr/language-en-json', () => {
 
     it('`{"foo":null}`', () => {
       expect(print(json`{"foo":null}`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Object>
+          <Object>
             openToken*: <* '{' />
             properties[]$:
-            <$Property>
+            <Property>
               key$:
-              <$String>
+              <String>
                 openToken*: <* '"' />
                 content$: <*StringContent 'foo' />
                 closeToken*: <* '"' />
               </>
               sigilToken*: <* ':' />
               value$:
-              <$Null>
+              <Null>
                 sigilToken*: <*Keyword 'null' />
               </>
             </>
@@ -255,12 +255,12 @@ describe('@bablr/language-en-json', () => {
 
     it('`[[]]`', () => {
       expect(print(json`[[]]`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Array>
+          <Array>
             openToken*: <* '[' />
             elements[]$:
-            <$Array>
+            <Array>
               openToken*: <* '[' />
               closeToken*: <* ']' />
             </>
@@ -272,24 +272,24 @@ describe('@bablr/language-en-json', () => {
 
     it('`{"key":[{}]}`', () => {
       expect(print(json`{"key":[{}]}`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Object>
+          <Object>
             openToken*: <* '{' />
             properties[]$:
-            <$Property>
+            <Property>
               key$:
-              <$String>
+              <String>
                 openToken*: <* '"' />
                 content$: <*StringContent 'key' />
                 closeToken*: <* '"' />
               </>
               sigilToken*: <* ':' />
               value$:
-              <$Array>
+              <Array>
                 openToken*: <* '[' />
                 elements[]$:
-                <$Object>
+                <Object>
                   openToken*: <* '{' />
                   closeToken*: <* '}' />
                 </>
