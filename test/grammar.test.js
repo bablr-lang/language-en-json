@@ -2,7 +2,7 @@ import { buildTag } from 'bablr';
 import { dedent } from '@qnighy/dedent';
 import language from '@bablr/language-en-json';
 import { expect } from 'expect';
-import { printCSTML } from '@bablr/helpers/tree';
+import { printCSTML, hoist, streamFromTree } from '@bablr/agast-helpers/stream';
 import { m } from '@bablr/helpers/grammar';
 
 let enhancers = {};
@@ -13,7 +13,7 @@ const buildJSONTag = (matcher) => {
 };
 
 const print = (tree) => {
-  return printCSTML(tree);
+  return printCSTML(hoist(streamFromTree(tree)));
 };
 
 describe('@bablr/language-en-json', () => {
