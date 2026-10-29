@@ -143,7 +143,7 @@ describe('@bablr/language-en-json', () => {
           _:
           <Number>
             sign*: null 
-            wholePart$: <*UnsignedInteger '1' />
+            wholePart$: <*DecimalInteger '1' />
             decimalSeparator*: null 
             exponentSeparator*: null 
           </>
@@ -196,10 +196,10 @@ describe('@bablr/language-en-json', () => {
           _:
           <Number>
             sign*: null 
-            wholePart$: <*UnsignedInteger '2' />
+            wholePart$: <*DecimalInteger '2' />
             decimalSeparator*: null 
             exponentSeparator*: <* 'e' />
-            exponentPart$: <*UnsignedInteger '1' />
+            exponentPart$: <*DecimalInteger '1' />
           </>
         </>
       `);
